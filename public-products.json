@@ -1,0 +1,1566 @@
+{
+ "schema_version": 1,
+ "count": 85,
+ "items": [
+  {
+   "id": "product.agent-commerce-cloud",
+   "name": "Agent Commerce Control Plane (hosted)",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "The deploy half (Slice 7) of the Agent Commerce Control Plane: a non-custodial Cloudflare Worker + D1 that turns the local ndev ai commerce CLI's governance into a shared, always-on control plane. It never holds a key or moves funds.",
+   "tags": [
+    "agent-commerce",
+    "non-custodial",
+    "governance",
+    "audit-ledger",
+    "metering",
+    "mcp",
+    "edge",
+    "holdco",
+    "off-desk"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-crypto-platform"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.crypto-desk"
+    }
+   ]
+  },
+  {
+   "id": "product.agent-prompt-profile",
+   "name": "Operator Prompt Profile",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Svelte 5 + Vite + @nicos/garrid-ds app over the agent-user-prompts harvest. The localhost-only Goals surface preserves bounded original human intent in a private durable ledger, reports its size/retention state, and authors validated catalog product/feature/group pins and a retained-prompt primary goal. A manual\u2026",
+   "tags": [
+    "svelte5",
+    "vite",
+    "garrid-ds",
+    "agent-prompts",
+    "operator-profile",
+    "local-tool",
+    "open",
+    "prompt profile",
+    "agent-user-prompts",
+    "conversation-goals",
+    "original-human-intent",
+    "session-pins",
+    "catalog-pins",
+    "private-ledger",
+    "manual-goals",
+    "standing-visions",
+    "prompt-time-capture",
+    "user-prompt-submit-hook",
+    "intent-candidates",
+    "pending",
+    "promote",
+    "reject",
+    "intent pending promote reject",
+    "intent catalog subjects",
+    "pending-promote-reject",
+    "exact-user-excerpts",
+    "exact-source-hashes",
+    "bounded-telemetry-dimensions",
+    "shared-goal-store-lock",
+    "intent-catalog-subjects",
+    "catalog subjects",
+    "incremental-transcript-cursors",
+    "catalog-atlas-deep-links",
+    "how do I open the operator prompt profile",
+    "open operator prompt profile",
+    "agent-user-prompts open"
+   ]
+  },
+  {
+   "id": "product.agenttrace",
+   "name": "AgentTrace",
+   "kind": "product",
+   "status": "deprecated",
+   "summary": "Local multi-agent session observatory MVP.",
+   "tags": [
+    "agent-ops",
+    "observability",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.aperture",
+   "name": "Exchange Demo",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "A SvelteKit 5 Coinbase-style exchange shell whose copilot can actually trade (buy/sell/watchlist with a confirm gate), persist conversations, and record every call to the ndev usage ledger. The demo is the sales asset; the product thesis is a drop-in copilot SDK with built-in usage metering + cost governance \u2014\u2026",
+   "tags": [
+    "developer",
+    "copilot",
+    "sdk"
+   ]
+  },
+  {
+   "id": "product.atelier-forge",
+   "name": "Forge",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Side-by-side with apps/nicos-guidelines-demo (Guidelines Demo, Garrid DS Console shell). This app reinvents the product chrome (portal \u2192 floor rail \u2192 stage: Heat, Stations, Kiln, Pulse, Stream, Ledger, Chamber) using design tokens + Motion only \u2014 not a Console/AppShell clone.",
+   "tags": [
+    "dogfood",
+    "evaluation",
+    "invent",
+    "react",
+    "go",
+    "edge"
+   ],
+   "connections": [
+    {
+     "kind": "affiliated_with",
+     "target": "product.nicos-guidelines-demo"
+    }
+   ]
+  },
+  {
+   "id": "product.bellwether",
+   "name": "Bellwether",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Point-in-time market research and paper trading for crypto and equities on keyless data. Every stored fact has an event time and a known_at. Research reads go through an as-of handle. Promotion refuses a strategy whose deflated Sharpe cannot survive the trial count. Desk retrieval is cdesk. This cell is a thin\u2026",
+   "tags": [
+    "crypto",
+    "quant",
+    "point-in-time",
+    "go",
+    "sqlite",
+    "external",
+    "desk-research"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.tape"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-crypto-platform"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.crypto-desk"
+    }
+   ]
+  },
+  {
+   "id": "product.cadence",
+   "name": "Cadence",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Built and verified live (menubar tray + AI debrief + headless E2E); monetized and packaged via the Ed25519 license spine \u2014 now backed by the durable license backend (service.license: HMAC'd Lemon Squeezy webhook + issued-license ledger + key recovery, not just the prototype .mjs). The prod AI path is resolved\u2026",
+   "tags": [
+    "consumer",
+    "focus",
+    "menubar"
+   ]
+  },
+  {
+   "id": "product.catalog-atlas-shell",
+   "name": "Catalog Atlas Shell",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Thin macOS Dock + menubar presentation shell over the existing Catalog Atlas daemon (catalog-serve on loopback :7788). Loads Atlas in system WebKit, probes /api/status for menubar health, and routes daemon install/status/ diagnose to the opt-in launchd surface. Does not embed catalog projection or ship a second\u2026",
+   "tags": [
+    "desktop",
+    "swiftui",
+    "catalog-atlas",
+    "menubar",
+    "webkit",
+    "dogfood",
+    "low-footprint"
+   ]
+  },
+  {
+   "id": "product.catalog-constellation",
+   "name": "Catalog Map",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Standalone localhost desktop/web gravity map over the canonical Catalog Atlas Constellation API. It preserves a focused orbital portfolio experience without restoring the retired Python snapshotter, direct Git fan-out, or Atlas SQLite reads.",
+   "tags": [
+    "desktop",
+    "web",
+    "catalog",
+    "portfolio",
+    "dogfood"
+   ]
+  },
+  {
+   "id": "product.claimguard",
+   "name": "ClaimGuard",
+   "kind": "product",
+   "status": "deprecated",
+   "summary": "Fail-closed verified-claims gate for AI text.",
+   "tags": [
+    "honesty",
+    "careers",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.cliptide",
+   "name": "Cliptide",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Secure, cross-platform (mobile + web + desktop + Chrome extension) AI content engine. Three mechanics on one spine: (1) long-form video \u2192 AI vertical shorts (moment-selection, reframe, animated captions, virality scoring), (2) save-from-anywhere + AI repurpose into per-platform posts + schedule, (3) capture\u2026",
+   "tags": [
+    "consumer",
+    "ai",
+    "video",
+    "social",
+    "creator",
+    "cross-platform"
+   ]
+  },
+  {
+   "id": "product.contextpack",
+   "name": "ContextPack",
+   "kind": "product",
+   "status": "deprecated",
+   "summary": "Budgeted agent context packs with receipts.",
+   "tags": [
+    "agent-ops",
+    "context",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.crypto-ai-saas",
+   "name": "Crypto AI SaaS (Solana)",
+   "kind": "product",
+   "status": "deprecated",
+   "summary": "Archived Solana-native automation + AI SaaS scaffold. Not a desk engine. Do not enroll new trading, perception, or research work here. Use Tape, Bellwether, or nicos-crypto, and search cdesk first.",
+   "tags": [
+    "crypto",
+    "solana",
+    "archived",
+    "external",
+    "off-desk"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-crypto-platform"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.crypto-desk"
+    }
+   ]
+  },
+  {
+   "id": "product.crypto-desk",
+   "name": "Crypto Desk",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Catalog control plane for crypto research, investing, and trading. cdesk is the desk map. If ndev ask and cdesk search disagree on desk work, cdesk wins. Tape, Bellwether, and nicos-crypto stay in their own trees. This product does not place orders or store prints.",
+   "tags": [
+    "crypto",
+    "desk",
+    "cdesk",
+    "catalog",
+    "map",
+    "external"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.tape"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.bellwether"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-crypto-platform"
+    }
+   ]
+  },
+  {
+   "id": "product.docs-puller",
+   "name": "docs-puller",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "The retrieval engine + product. A pure-Go (modernc.org/sqlite, zero cgo) FTS5 + embeddings mirror of any docs corpus, with a measured retrieval eval the rest of the category doesn't publish.",
+   "tags": [
+    "developer",
+    "docs",
+    "retrieval",
+    "oss",
+    "open-core"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.docs-puller-cloud"
+    }
+   ]
+  },
+  {
+   "id": "product.docs-puller-cloud",
+   "name": "docs-puller Cloud",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "The proprietary hosted product built around the standalone docs-puller CLI. It owns the control plane, ingest/search services, console, deployment validators, tenancy, commercial auth, billing/webhook proof, and customer operations. The code and deploy contracts are substantial, but the product is still built, not\u2026",
+   "tags": [
+    "b2b",
+    "docs",
+    "retrieval",
+    "managed-service",
+    "multi-tenant",
+    "billing",
+    "proprietary"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.docs-puller"
+    }
+   ]
+  },
+  {
+   "id": "product.echo",
+   "name": "Echo",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Voice vertical built + verified (capture \u2192 on-device dictation/manual \u2192 AI cleanup via the local ndev inference gateway \u2192 structured, auto-filed note), synced across web/mobile/desktop on the convex-realtime lane. Capture on the phone (where you talk), organize/search on desktop. Remaining before public\u2026",
+   "tags": [
+    "consumer",
+    "voice",
+    "proposed"
+   ]
+  },
+  {
+   "id": "product.edge-ocr",
+   "name": "Edge OCR",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Dogfooded live: Tesseract OCR served across 3 tiers, deployed and auth-gated, screenshot-verified. The reference proof for the edge-sidecar scaffold lane (Cloudflare Worker + Turso + Go native engine).",
+   "tags": [
+    "developer",
+    "ocr",
+    "edge"
+   ]
+  },
+  {
+   "id": "product.elevated",
+   "name": "Elevated",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Wellness consumer app + Elevated Admin dashboard monorepo matching the design references.",
+   "tags": [
+    "consumer",
+    "admin",
+    "wellness",
+    "monorepo",
+    "vite",
+    "react",
+    "typescript",
+    "external",
+    "design-reference"
+   ]
+  },
+  {
+   "id": "product.evidence-vault",
+   "name": "Evidence Vault",
+   "kind": "product",
+   "status": "deprecated",
+   "summary": "Evidence pack verifier (paths + SHA-256).",
+   "tags": [
+    "portfolio",
+    "evals",
+    "evidence",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.field-notes",
+   "name": "Field Notes",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "A synced web + mobile + desktop suite on the supabase-bootstrap scaffold lane (Postgres + Auth + Realtime + RLS). Primarily a scaffold dogfood proving the Supabase lane end-to-end, not yet a go-to-market product.",
+   "tags": [
+    "scaffold",
+    "supabase"
+   ]
+  },
+  {
+   "id": "product.fleetboard",
+   "name": "Fleet Board",
+   "kind": "product",
+   "status": "deprecated",
+   "summary": "Multi-agent parallel work board.",
+   "tags": [
+    "agent-ops",
+    "orchestration",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.flightdeck-hud",
+   "name": "Products HUD",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Native SDK (Vercel Labs) macOS HUD over ndev products list + Catalog Atlas health. Packaged as Flightdeck.app with self-contained feed.sh (no webview).",
+   "tags": [
+    "operator",
+    "native",
+    "desktop",
+    "hud",
+    "ndev",
+    "portfolio",
+    "macOS",
+    "offline-first",
+    "packaged-app"
+   ]
+  },
+  {
+   "id": "product.formloop",
+   "name": "FormLoop",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Human-in-loop form map with non-submit packets.",
+   "tags": [
+    "careers",
+    "forms",
+    "human-in-loop",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.frontier-forge",
+   "name": "Frontier Forge",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "First-person WebGPU survival craft with a shipped local v1 loop: gather, craft, eat, save, respawn, and advance the Worldforge Beacon.",
+   "tags": [
+    "game",
+    "webgpu",
+    "survival-craft"
+   ]
+  },
+  {
+   "id": "product.garrid-board",
+   "name": "Garrid Board",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Garrid Board is the public-facing product slice for the Garrid dashboard design system. The current v0.1 surface combines a localhost demo and install guide, the shadcn-compatible Garrid registry, and the garrid init|add|list CLI.",
+   "tags": [
+    "garrid",
+    "design-system",
+    "dashboard",
+    "component-registry",
+    "shadcn",
+    "localhost"
+   ]
+  },
+  {
+   "id": "product.garrid-factory-cloud",
+   "name": "Garrid Build (governed autonomous software delivery)",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Garrid Build is the outward product name. Garrid Guided Pilot v2 is its provisional $1,500, 14-day entry offer. product.garrid-factory-cloud, apps/garrid-factory-cloud, Factory Cloud, and Agent Control Plane remain stable catalog, implementation, and technical identifiers.",
+   "tags": [
+    "garrid-factory",
+    "garrid-build",
+    "agent-control-plane",
+    "managed-service",
+    "multi-tenant",
+    "metering",
+    "edge",
+    "governed-proof-intake",
+    "jit-capability-broker",
+    "operational-proof-ledger",
+    "managed-author-reviewer"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.agent-commerce-cloud"
+    }
+   ]
+  },
+  {
+   "id": "product.gatherloom",
+   "name": "Gather",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Gatherloom helps a small trusted group notice, make, and keep a life together. Members capture moments offline, answer shared prompts and rituals, and weave their contributions into exportable chapters. It intentionally avoids public follower graphs, popularity counts, ads, and infinite scroll.",
+   "tags": [
+    "consumer",
+    "ios",
+    "native",
+    "swiftui",
+    "offline-first",
+    "social",
+    "content-creation",
+    "go",
+    "sqlite",
+    "cloudflare",
+    "durable-objects",
+    "r2"
+   ]
+  },
+  {
+   "id": "product.grok-viewer",
+   "name": "Grok Viewer",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Native macOS desktop app for following Grok Build conversations in real time: schema-v1 NDJSON live tail via ndev session events --agent grok --follow, FTS session search, markdown rendering, multi-window follow, density modes, and compose mediated by ndev session send with an exclusive verified live owner (it does\u2026",
+   "tags": [
+    "desktop",
+    "swiftui",
+    "grok",
+    "dogfood"
+   ]
+  },
+  {
+   "id": "product.host-inbox",
+   "name": "host-inbox",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Local Go inbox for Unix host job mail in /var/mail. Parses mbox, classifies cron jobs, serves a loopback HTML UI and JSON API, and archives messages with an exclusive lock.",
+   "tags": [
+    "go",
+    "cli",
+    "html",
+    "macos",
+    "cron",
+    "mailbox",
+    "operator",
+    "external"
+   ]
+  },
+  {
+   "id": "product.jobkit",
+   "name": "jobkit",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Local-first Go job-search toolkit. Canonical source is the standalone MIT repo (nstranquist/jobkit).",
+   "tags": [
+    "cli",
+    "go",
+    "oss",
+    "careers",
+    "external-product"
+   ]
+  },
+  {
+   "id": "product.keyring",
+   "name": "Keyring",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "The strongest net-new bet: dogfoods the crown-jewel nvault E2EE engine AND funnels consumers into the #1 revenue product (nvault B2B), on the same account/billing spine. STARTED 2026-06-06 (apps/keyring, evidence docs/active/06-06-2130-saas-kit-and-keyring.md): rendered from the Convex SaaS kit (auth + Stripe\u2026",
+   "tags": [
+    "consumer",
+    "secrets",
+    "zero-knowledge"
+   ]
+  },
+  {
+   "id": "product.lifestyle-city-loft",
+   "name": "Lifestyle City Loft",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Polished lifestyle-sim vertical slice: walk a metro loft (Blender GLB), interact with lifestyle props (sculptRuntime crate, lamp, window, scan sample, lounge, coffee, daybed, vinyl, bookshelf), pause/Controls menu, stack showcase of the eval toolchain.",
+   "tags": [
+    "consumer",
+    "game",
+    "lifestyle-sim",
+    "threejs",
+    "blender",
+    "photogrammetry",
+    "vertical-slice",
+    "external",
+    "external-product",
+    "portfolio"
+   ]
+  },
+  {
+   "id": "product.lumen-relay",
+   "name": "Unity Courier",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Unity 6 LTS arcade courier used to dogfood the Unity CLI and a docs-puller unity corpus.",
+   "tags": [
+    "lab",
+    "stack-pilot",
+    "unity",
+    "game",
+    "external"
+   ]
+  },
+  {
+   "id": "product.marginalia",
+   "name": "Read Later",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Synced web + mobile + desktop suite on Convex Realtime (stack-scaffold output). Biggest proven market in the slate (Readwise live-confirmed; Pocket sunset \u2192 gap). Reuses docs-puller retrieval tech for library search. Monetization rides the shared Ed25519 license spine, now backed by the durable license backend\u2026",
+   "tags": [
+    "consumer",
+    "read-later",
+    "local-first",
+    "slipwright"
+   ]
+  },
+  {
+   "id": "product.mcp-vault",
+   "name": "MCP Vault",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "A native macOS desktop app (Tauri 2 + Solid.js) for browsing, configuring, testing, and syncing Model Context Protocol servers across Claude Code, Claude Desktop, Cursor, VS Code, and Windsurf. The most release-ready product in the portfolio \u2014 a full signed/notarized/QA/auto-update pipeline is built and\u2026",
+   "tags": [
+    "developer",
+    "mcp",
+    "desktop",
+    "macos"
+   ]
+  },
+  {
+   "id": "product.mcpgate",
+   "name": "MCP Gate",
+   "kind": "product",
+   "status": "deprecated",
+   "summary": "Local MCP tool-call policy allow/deny gate.",
+   "tags": [
+    "agent-ops",
+    "mcp",
+    "security",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.meridian",
+   "name": "Next Demo",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Next.js App Router UI island (shadcn / Base UI) with marketing, auth, and a multi-page SaaS dashboard.",
+   "tags": [
+    "lab",
+    "stack-pilot",
+    "nextjs",
+    "shadcn",
+    "external"
+   ]
+  },
+  {
+   "id": "product.mundial",
+   "name": "Mundial",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "A web + mobile + desktop app, built through the Garrid factory (convex-realtime lane), that predicts the 2026 World Cup with a genuinely state-of-the-art football model and turns it into bracket recommendations, fair odds, and value bets vs the market.",
+   "tags": [
+    "consumer",
+    "sports",
+    "prediction",
+    "betting",
+    "analytics",
+    "cross-platform"
+   ]
+  },
+  {
+   "id": "product.ncli",
+   "name": "ncli",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Standalone Rust clap + ratatui + crossterm CLI shipping essential ndev / nship / ngtm surfaces.",
+   "tags": [
+    "cli",
+    "rust",
+    "ratatui",
+    "clap",
+    "agent",
+    "external"
+   ]
+  },
+  {
+   "id": "product.ndev-pressure",
+   "name": "NDev Pressure",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Native macOS desktop + menu bar app for visualizing and controlling ndev session pressure. Thin SwiftUI shell over JSON contracts for host free-memory / CPU / swap / agent-tree pressure, adaptive internal-SSD write observation, bounded likely-writer attribution, operator-confirmed memory-only path tracing, host\u2026",
+   "tags": [
+    "desktop",
+    "swiftui",
+    "session-pressure",
+    "memory",
+    "cpu",
+    "host-guard",
+    "work-queue",
+    "backpressure",
+    "attribution",
+    "calibration-cohorts",
+    "dogfood",
+    "disk-writes",
+    "ssd-observability",
+    "sqlite"
+   ]
+  },
+  {
+   "id": "product.nico-portfolio",
+   "name": "Nico Portfolio",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Astro portfolio candidate at apps/nico-portfolio. It includes deterministic resume sync, evidence-bounded case studies, a downloadable PDF, metadata contracts, and privacy-minimal first-party telemetry.",
+   "tags": [
+    "careers",
+    "portfolio",
+    "astro",
+    "cloudflare",
+    "local-only",
+    "public-route-disabled",
+    "personal-brand"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-career-profile"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nstranquist.github.io"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.docs-puller"
+    }
+   ]
+  },
+  {
+   "id": "product.nico-portfolio-v2",
+   "name": "Nico Studio Portfolio V2",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Parallel, from-scratch Astro portfolio at apps/nico-portfolio-v2. It presents Nico as a senior full-stack, cloud, and AI systems engineer through a polished, human product-engineering-studio experience rather than a resume template or software-catalog dump.",
+   "tags": [
+    "careers",
+    "portfolio",
+    "astro",
+    "cloudflare",
+    "personal-brand",
+    "product-engineering-studio"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-career-profile"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nstranquist.github.io"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.docs-puller"
+    }
+   ]
+  },
+  {
+   "id": "product.nicos-agent-studio",
+   "name": "Nicos Agent Studio",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Native macOS desktop for parallel coding agents \u2014 the Super.engineering-shaped workspace. Thin SwiftUI shell over ndev session studio JSON contracts: open a git repo, spawn Claude/Codex/Grok/Kimi/Cursor agents (dry-run launch plans or tmux-detached live), list correlated sessions, review porcelain diffs, and\u2026",
+   "tags": [
+    "desktop",
+    "swiftui",
+    "agent-studio",
+    "parallel-agents",
+    "worktree",
+    "git",
+    "super-engineering",
+    "dogfood"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.ndev-pressure"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.grok-viewer"
+    }
+   ]
+  },
+  {
+   "id": "product.nicos-career-profile",
+   "name": "Nico Career Profile & Resume",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Fact-locked career workspace. It owns verified facts, the v1.9.0 one-page platform default, four sendable role lanes, and reproducible PDF/DOCX/ATS/HTML/JSON exports. Its private localhost gallery compares platform, full-stack, adoption, and v1.9.1 enterprise resumes. Five deterministic wording passes and PDF\u2026",
+   "tags": [
+    "careers",
+    "resume",
+    "profile",
+    "job-search",
+    "ats",
+    "gallery",
+    "simple-english",
+    "personal",
+    "external",
+    "external-product"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.nico-portfolio"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nico-portfolio-v2"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nstranquist.github.io"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.docs-puller"
+    }
+   ]
+  },
+  {
+   "id": "product.nicos-catalog",
+   "name": "Nicos Catalog",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Apache-2.0 Go module (github.com/nstranquist/nicos-catalog) that turns a directory of authored entity files into a validated, searchable, typed catalog. Hosts inject their own Layout and Providers; the engine owns normalization, deterministic indexing, BM25 retrieval, graph compilation, drift and reconcile gates,\u2026",
+   "tags": [
+    "oss",
+    "go",
+    "library",
+    "apache-2.0",
+    "catalog-engine",
+    "public-release"
+   ],
+   "url": "https://nicos-catalog-explorer.nstranquist.workers.dev/"
+  },
+  {
+   "id": "product.nicos-crypto-platform",
+   "name": "Nicos Crypto Platform",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Standalone crypto platform for EVM, Solana, and Substrate planning, venue-neutral paper trading, guarded externally signed submission, and non-custodial agent commerce. nicos-tools keeps ndev ai crypto as a compatibility CLI. Desk retrieval is cdesk. A paper fill is not a live fill.",
+   "tags": [
+    "crypto",
+    "trading",
+    "paper",
+    "evm",
+    "solana",
+    "non-custodial",
+    "external",
+    "desk-trading"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.tape"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.bellwether"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.crypto-desk"
+    }
+   ]
+  },
+  {
+   "id": "product.nicos-dj",
+   "name": "Nicos DJ",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Native-first DJ workstation for web, desktop, iPhone/iPad, and Android over one shared Rust audio engine (engine/dj-core). Tauri/cpal hosts desktop; an import-free WASM ABI runs inside AudioWorklet; SwiftUI/AVAudioEngine calls a planar CoreAudio C ABI; and Compose/JNI/AAudio calls Rust directly into the\u2026",
+   "tags": [
+    "consumer",
+    "dj",
+    "audio",
+    "cross-platform",
+    "desktop",
+    "web",
+    "ios",
+    "android",
+    "realtime",
+    "ai"
+   ]
+  },
+  {
+   "id": "product.nicos-docs-rn",
+   "name": "Nicos Docs RN",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Expo / React Native client for docs-puller serve (the FTS5 search API over a local docs corpus \u2014 61 sources / 9k+ docs). Search, source filter, recent searches, and a full markdown reader. Same stack as nicos-scratchpad-rn (Zod client + react-query + SecureStore settings + AsyncStorage prefs).",
+   "tags": [
+    "mobile",
+    "docs",
+    "developer"
+   ]
+  },
+  {
+   "id": "product.nicos-editor",
+   "name": "Nicos Editor",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Nicos Editor is a pinned Lapce v0.4.6 overlay.",
+   "tags": [
+    "desktop",
+    "macos",
+    "editor",
+    "lapce",
+    "native",
+    "gpu",
+    "ndev",
+    "overlay",
+    "dogfood",
+    "local-alpha"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-ide"
+    }
+   ]
+  },
+  {
+   "id": "product.nicos-flag-eval",
+   "name": "nicos-flag-eval",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Cross-language feature-flag evaluator extracted from ndev flags. Go is the bucket reference. TypeScript and Swift must match schemas/parity-fixture.json.",
+   "tags": [
+    "developer",
+    "feature-flags",
+    "evaluator",
+    "oss",
+    "external-product"
+   ]
+  },
+  {
+   "id": "product.nicos-flags",
+   "name": "Nicos Flags",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "A tiny Cloudflare Pages edge service that hosts the universal ndev flags system: it evaluates flags at the edge with deterministic cross-language bucketing and serves a cheap, signed manifest for polling. The repo's own flag plane (it gates agent behavior like nicos.agent.next-prompt), catalogued here because it's\u2026",
+   "tags": [
+    "developer",
+    "feature-flags",
+    "edge",
+    "cloudflare",
+    "svelte"
+   ]
+  },
+  {
+   "id": "product.nicos-guidelines-demo",
+   "name": "Guidelines Demo",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Deep dogfood of recipe.nicos-guidelines / skill nicos-guidelines: landing \u2192 dev login demo \u2192 onboarding \u2192 boards / token kiln / motion / SSE \u2192 billing Free\u2194Pro \u2192 settings. Built on garrid-ds-react + design-tokens + Motion 12 + Go/SQLite + edge-auth.",
+   "tags": [
+    "dogfood",
+    "golden-path",
+    "react",
+    "go",
+    "edge"
+   ],
+   "connections": [
+    {
+     "kind": "affiliated_with",
+     "target": "product.atelier-forge"
+    }
+   ]
+  },
+  {
+   "id": "product.nicos-hidden-menubar",
+   "name": "Nicos Hidden Bar",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Native macOS menu-bar organizer. Canonical source is the standalone GPL-3.0 repo (nstranquist/nicos-hidden-menubar).",
+   "tags": [
+    "desktop",
+    "macos",
+    "menubar",
+    "oss",
+    "external-product"
+   ]
+  },
+  {
+   "id": "product.nicos-host",
+   "name": "Nicos Host",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Nicos Host is the Phase 0 local deployment host. ndev host deploy runs git archive for a SHA, records an immutable deployment in a local ledger file (override NDEV_HOST_DIR), and prints a SHA URL using the same hostname grammar as ndev endpoints url. www is an alias exclusive to one sanitized project, so two local\u2026",
+   "tags": [
+    "dogfood",
+    "local-first",
+    "semver:0.1.0"
+   ]
+  },
+  {
+   "id": "product.nicos-ide",
+   "name": "Nicos IDE",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Nicos IDE is the durable local Code-OSS workbench for NDev, installed as a native app with its own nicos-ide command.",
+   "tags": [
+    "desktop",
+    "macos",
+    "code-oss",
+    "ide",
+    "agent",
+    "ndev",
+    "dogfood",
+    "native-installed",
+    "local-alpha"
+   ]
+  },
+  {
+   "id": "product.nicos-pdf-studio",
+   "name": "Nicos PDF Studio",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Private GPUI desktop and JSON harness for generated PDFs. The interface has a source outline, collapsible sections, bounded document undo and redo, crash-safe unsaved recovery, a compact field view, and draft PDFs. Field highlights and PDF click-back connect inputs to rendered positions.",
+   "tags": [
+    "desktop",
+    "rust",
+    "gpui",
+    "pdf",
+    "local-first",
+    "dogfood"
+   ]
+  },
+  {
+   "id": "product.nicos-prompts",
+   "name": "Nicos Prompts",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Menu-bar front end for ndev ai prompts. \u2303\u2325P opens a composer prefilled from the clipboard, with a live preview (derived title, content id, already-saved warning); \u2303\u2325\u21e7P files the clipboard instantly. Each prompt is written verbatim to <obsidian-vault>/prompt-library/<date>-<slug>.md and mirrored into the\u2026",
+   "tags": [
+    "prompts",
+    "prompt-library",
+    "menubar",
+    "obsidian",
+    "scratchpad"
+   ]
+  },
+  {
+   "id": "product.nicos-scratchpad",
+   "name": "Nicos Scratchpad",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Local-first notes/tasks platform: markdown files are the source of truth, fronted by seven surfaces (all kept, per the 2026-06-09 operator decision): native macOS menubar app (apps/desktop/nicos-scratchpad, v0.4.1 accessory + SMAppService + telemetry + native Agents/custom workspace surfaces), native iOS capture\u2026",
+   "tags": [
+    "developer",
+    "menubar",
+    "scratchpad",
+    "mobile",
+    "vscode"
+   ]
+  },
+  {
+   "id": "product.nicos-slot-dock",
+   "name": "Nicos Slot Dock",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Mac-native edge dock strip that honors the system Dock (merge / mirror / off) and layers custom slots on top. The canonical source is the standalone MIT repo; the monorepo app remains a source mirror and provenance anchor. It is buildable, testable, discoverable through the external catalog, and controllable\u2026",
+   "tags": [
+    "desktop",
+    "macos",
+    "dock",
+    "swiftui",
+    "appkit",
+    "dogfood",
+    "native-installed",
+    "portfolio-built",
+    "external-product",
+    "oss"
+   ]
+  },
+  {
+   "id": "product.nicos-song-studio",
+   "name": "Nicos Song Studio",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Repo-owned Suno-style music creation studio prototype.",
+   "tags": [
+    "consumer",
+    "music",
+    "ai"
+   ]
+  },
+  {
+   "id": "product.nicos-terminal",
+   "name": "Nicos Terminal",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Nicos Terminal is the local terminal experience for the Nicos agent fleet. Version 0.6.0-alpha.1 is a packaged native AppKit host backed by a pinned Ghostty framework. tmux owns durable processes, and ndev session terminal owns typed one-shot control, layouts, joined status, attention, exact focus and attachment,\u2026",
+   "tags": [
+    "terminal",
+    "ghostty",
+    "iterm2",
+    "tmux",
+    "agent-layout",
+    "local-first",
+    "dogfood",
+    "semver:0.6.0-alpha.1"
+   ]
+  },
+  {
+   "id": "product.nicos-tools",
+   "name": "Nicos Tools Engineering Control Plane",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "The local-first control plane for Nico's software portfolio. Projects own their checks and telemetry emitters; nicos-tools owns scheduling, aggregation, evidence scoring, proposal generation, preservation, and cross-project review.",
+   "tags": [
+    "developer-platform",
+    "control-plane",
+    "daily-driver",
+    "dogfood"
+   ]
+  },
+  {
+   "id": "product.nicos-voice",
+   "name": "Nicos Voice",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Working end-to-end (engine de-risk \u2192 cgo proof \u2192 warm daemon \u2192 native app \u2192 real-speech dictation verified \u2192 WER eval \u2192 AI cleanup). Local-only dictation into the focused app (the terminal running Claude Code, an editor, anywhere); audio never leaves the Mac. Installed at /Applications/Nicos Voice.app.",
+   "tags": [
+    "voice",
+    "stt",
+    "on-device",
+    "menubar",
+    "privacy"
+   ]
+  },
+  {
+   "id": "product.nicos-window-switcher",
+   "name": "Nicos Window Switcher",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Mac-native window switcher (not an app switcher). Canonical source is the standalone MIT repo (nstranquist/nicos-window-switcher). Public APIs only. Default hotkey is \u2303\u2325Tab.",
+   "tags": [
+    "desktop",
+    "macos",
+    "window-switcher",
+    "swiftui",
+    "appkit",
+    "dogfood",
+    "external-product",
+    "oss"
+   ]
+  },
+  {
+   "id": "product.nicos-zed",
+   "name": "Nicos Zed",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Nicos Zed is a stock Zed adapter for NDev. It is not a Zed fork and not a Nicos IDE replacement.",
+   "tags": [
+    "desktop",
+    "macos",
+    "zed",
+    "adapter",
+    "ndev",
+    "mcp",
+    "agent",
+    "dogfood",
+    "local-alpha"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-ide"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-agent-studio"
+    }
+   ]
+  },
+  {
+   "id": "product.nstranquist.github.io",
+   "name": "Nico GitHub Pages Work Site",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "The canonical public work site is <https://nstranquist.github.io/>. GitHub Pages serves it from the master branch of <https://github.com/nstranquist/nstranquist.github.io>. GitHub reports the site as built with HTTPS enforced. Nico's GitHub profile links to this URL.",
+   "tags": [
+    "careers",
+    "portfolio",
+    "github-pages",
+    "public",
+    "external-product"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-career-profile"
+    },
+    {
+     "kind": "replaces",
+     "target": "product.nico-portfolio"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.docs-puller"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-catalog"
+    }
+   ]
+  },
+  {
+   "id": "product.nvr",
+   "name": "nvr \u2014 Nicos Visual Regression",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "Self-hosted Chromatic-equivalent: visual-regression snapshotting and diffing for component or page screenshots. The deployed edge stack uses Cloudflare Worker Static Assets, Worker functions, R2, and Turso. The companion cron Worker ships alongside it in the extract.",
+   "tags": [
+    "developer",
+    "visual-regression",
+    "edge"
+   ]
+  },
+  {
+   "id": "product.pin-study",
+   "name": "Pin Study",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Next.js 16.3 App Router + shadcn presentation plane for jobkit coach study. Scoring stays in JobKit. Progress stays in JOBKIT_HOME.",
+   "tags": [
+    "nextjs",
+    "shadcn",
+    "jobkit",
+    "career"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.jobkit"
+    }
+   ]
+  },
+  {
+   "id": "product.pips",
+   "name": "PIPS",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "A fast, beautiful pass-and-play dice game built native for iOS (SwiftUI + SpriteKit + Core Haptics + StoreKit 2). Roll two dice; 7, 11, or doubles lets you deal pips (penalty points) to a rival; lowest pips wins when someone fills up. Family-friendly reframing of the traditional \"7-11-Doubles\" drinking game (all\u2026",
+   "tags": [
+    "consumer",
+    "game",
+    "ios",
+    "native"
+   ]
+  },
+  {
+   "id": "product.prbench",
+   "name": "PR Bench",
+   "kind": "product",
+   "status": "deprecated",
+   "summary": "Fixture code-review eval with precision/recall.",
+   "tags": [
+    "agent-ops",
+    "evals",
+    "code-review",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.prepnote",
+   "name": "Prepnote",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Track progress and notes on online learning content. First useful run ships a digested NeetCode catalog (real titles + youtube.com/watch URLs). Add other YouTube channels, playlists, or videos from the workspace.",
+   "tags": [
+    "interview-prep",
+    "local-first",
+    "youtube",
+    "react",
+    "go",
+    "edge",
+    "external"
+   ]
+  },
+  {
+   "id": "product.roamorph",
+   "name": "Roamorph",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "A real-world browser platformer in which a squishy blob rolls, bounces, grows, and collects fragments across city streets and rooftops. Google Photorealistic 3D Tiles and a credential-free deterministic OpenStreetMap preview share typed game state, a renderer-independent physics core, and session-only performance\u2026",
+   "tags": [
+    "game",
+    "browser",
+    "geospatial",
+    "cesium",
+    "openstreetmap",
+    "svelte"
+   ],
+   "url": "https://roamorph.pages.dev/"
+  },
+  {
+   "id": "product.saas-platform-nextjs",
+   "name": "SaaS Platform (Next.js 16)",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "A faithful Next.js 16 port of the multi-tenant SaaS dashboard, built as a third app alongside saas-platform-svelte (SvelteKit) and saas-platform-react (TanStack Start). All three share the same verbatim libsql service layer.",
+   "tags": [
+    "saas",
+    "nextjs",
+    "app-router",
+    "react-server-components",
+    "server-actions",
+    "ark-ui",
+    "tanstack-table",
+    "libsql",
+    "multi-tenant",
+    "ssr",
+    "template"
+   ]
+  },
+  {
+   "id": "product.saas-platform-react",
+   "name": "SaaS Platform (React + TanStack)",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "A faithful React + TanStack port of apps/saas-platform-svelte's multi-tenant SaaS dashboard, built as a second app (the SvelteKit original is untouched). Same product surface, different frontend lane.",
+   "tags": [
+    "saas",
+    "react",
+    "tanstack-start",
+    "tanstack-router",
+    "tanstack-table",
+    "ark-ui",
+    "libsql",
+    "multi-tenant",
+    "ssr",
+    "template"
+   ]
+  },
+  {
+   "id": "product.saas-platform-svelte",
+   "name": "SaaS Platform (SvelteKit)",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "The original multi-tenant SaaS dashboard shell on the SvelteKit lane \u2014 a clone of the Nicos SaaS platform, ported page by page with real auth and real persistence and zero external dependency for local dev. Its React + TanStack and Next.js 16 ports are already cataloged products; this entry closes the gap on the\u2026",
+   "tags": [
+    "tanstack-table",
+    "saas",
+    "sveltekit",
+    "svelte5",
+    "bits-ui",
+    "libsql",
+    "multi-tenant",
+    "ssr",
+    "template"
+   ]
+  },
+  {
+   "id": "product.signal-heist",
+   "name": "Signal Heist",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "An asymmetric two-player browser co-op game: one player acts in the field while the other sees the missing intelligence. The same typed protocol runs against either a Durable Object SQLite room or a D1-backed room coordinated by a hibernating Durable Object.",
+   "tags": [
+    "consumer",
+    "game",
+    "multiplayer",
+    "realtime",
+    "durable-objects",
+    "d1",
+    "cloudflare",
+    "open-source",
+    "external",
+    "external-product"
+   ]
+  },
+  {
+   "id": "product.snapref",
+   "name": "SnapRef",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "SnapRef is the locally extracted generic product behind the shipped ndev browser harness. It is headless by default, isolates browser profiles, returns revision-bound executable element references, acts only after typed actionability checks, and keeps navigation, drive, filesystem, and arbitrary JavaScript\u2026",
+   "tags": [
+    "developer",
+    "browser",
+    "automation",
+    "agent",
+    "oss",
+    "open-core"
+   ]
+  },
+  {
+   "id": "product.solo-ops",
+   "name": "Solo Ops",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Offline inquiry CRM + policy pack generator.",
+   "tags": [
+    "local-business",
+    "ops",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.stableclose",
+   "name": "StableClose",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "A non-custodial stablecoin receivables close desk: observe inbound Base USDC, match transfers to invoices conservatively, resolve exceptions with evidence, and export an accountant-ready CSV. The wedge is reconciliation across payment providers and direct wallets, not another invoice or custody rail.",
+   "tags": [
+    "b2b",
+    "stablecoin",
+    "accounts-receivable",
+    "reconciliation",
+    "non-custodial",
+    "base",
+    "usdc",
+    "edge"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.agent-commerce-cloud"
+    }
+   ]
+  },
+  {
+   "id": "product.tape",
+   "name": "Tape",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Live crypto tape for venue-local prints and DEX discovery. A Go resident scans Hyperliquid, Coinbase, and GeckoTerminal, stores prints, ranks moves with a liquidity floor, and serves a loopback board. A native macOS app (menu bar extra + desktop window) is a shell over that board. Perception only \u2014 no orders, no\u2026",
+   "tags": [
+    "crypto",
+    "tape",
+    "prices",
+    "hyperliquid",
+    "geckoterminal",
+    "menubar",
+    "macos",
+    "go",
+    "sqlite",
+    "external",
+    "desk-research"
+   ],
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.bellwether"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-crypto-platform"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.crypto-desk"
+    }
+   ]
+  },
+  {
+   "id": "product.toolsmith-studio",
+   "name": "Toolsmith Studio",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Offline brief-to-shortform recipe factory.",
+   "tags": [
+    "content",
+    "distribution",
+    "go",
+    "cli",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.vespera",
+   "name": "Vespera",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Local loopback studio for explicit media of fictional adults. The policy kernel refuses minors and real-person likeness before any generator runs. SpaceXAI Imagine is the live provider; mock covers tests and keyless demos. This cell is a thin nicos-tools pointer. Keep off career/OSS showcase pins.",
+   "tags": [
+    "adult",
+    "studio",
+    "go",
+    "sqlite",
+    "spacexai",
+    "imagine",
+    "policy",
+    "loopback",
+    "external",
+    "proprietary"
+   ]
+  },
+  {
+   "id": "product.work",
+   "name": "Work",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Work is the enrolled tracker for nicos-tools. Agents manage it through ndev --json work the way they would manage Linear over GraphQL.",
+   "tags": [
+    "agent-ops",
+    "tracker",
+    "cli",
+    "board",
+    "garrid",
+    "offline-first"
+   ]
+  },
+  {
+   "id": "product.x402-paid-resource",
+   "name": "x402 Paid Resource (seller dogfood)",
+   "kind": "product",
+   "status": "experimental",
+   "summary": "Workers-compatible seller dogfood for the Cloudflare Wallets \u00d7 x402 Agent Commerce KEP. Unpaid \u2192 HTTP 402; paid after local bind + facilitator isValid:true; proofs consumed once via Durable Object PROOF_REPLAY.",
+   "tags": [
+    "x402",
+    "seller",
+    "cloudflare-workers",
+    "dogfood",
+    "agent-commerce",
+    "holdco",
+    "off-desk"
+   ],
+   "connections": [
+    {
+     "kind": "supports",
+     "target": "product.agent-commerce-cloud"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-crypto-platform"
+    },
+    {
+     "kind": "bridges_to",
+     "target": "product.crypto-desk"
+    }
+   ]
+  }
+ ]
+}

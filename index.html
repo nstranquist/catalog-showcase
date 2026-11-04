@@ -1,0 +1,2613 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Software Catalog — Every project, one index</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#fbfbfc;
+        --bg-subtle:#f4f4f5;
+        --surface:#ffffff;
+        --surface-hover:#fafafa;
+        --border:#e6e6e8;
+        --border-strong:#d4d4d8;
+        --text:#17171a;
+        --text-2:#52525b;
+        --text-3:#8e8e96;
+        --accent:#5e6ad2;
+        --accent-soft:rgba(94,106,210,.09);
+        --accent-text:#4c5ac2;
+        --on-accent:#ffffff;
+        --live:#1f9d66;
+        --maint:#b7791f;
+        --exp:#6d6dd0;
+        --arch:#9a9aa2;
+        --shadow-lg:0 24px 70px -12px rgba(16,16,20,.18), 0 4px 16px rgba(16,16,20,.06);
+        --shadow-sm:0 1px 2px rgba(16,16,20,.05);
+        --window-shadow:0 32px 90px -24px rgba(16,16,20,.28), 0 8px 28px rgba(16,16,20,.08);
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#08090a;
+          --bg-subtle:#0e0f11;
+          --surface:#101112;
+          --surface-hover:#16171a;
+          --border:#232428;
+          --border-strong:#333439;
+          --text:#f4f4f5;
+          --text-2:#a1a1aa;
+          --text-3:#62666d;
+          --accent:#828df8;
+          --accent-soft:rgba(130,141,248,.13);
+          --accent-text:#a5b4fc;
+          --on-accent:#12131a;
+          --live:#3fb68b;
+          --maint:#d9a13b;
+          --exp:#9a9ae8;
+          --arch:#6d6f76;
+          --shadow-lg:0 24px 70px -12px rgba(0,0,0,.7), 0 4px 16px rgba(0,0,0,.4);
+          --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+          --window-shadow:0 32px 90px -24px rgba(0,0,0,.8), 0 8px 28px rgba(0,0,0,.5);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;background:var(--bg);color:var(--text);
+        font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+        font-size:16px;line-height:1.55;
+        -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+      }
+      ::selection{background:var(--accent-soft)}
+      a{color:inherit}
+      button{font:inherit;cursor:pointer}
+      :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+      .mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+
+      .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+      /* ---------- top nav ---------- */
+      header.nav{
+        position:sticky;top:0;z-index:40;
+        background:color-mix(in srgb, var(--bg) 82%, transparent);
+        backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+        border-bottom:1px solid var(--border);
+      }
+      .nav-in{display:flex;align-items:center;gap:28px;height:56px}
+      .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:14.5px;letter-spacing:-.01em;text-decoration:none}
+      .brand-mark{width:22px;height:22px;border-radius:6px;background:var(--text);color:var(--bg);display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:0}
+      .nav-links{display:flex;gap:4px;margin-left:4px}
+      .nav-links a{font-size:13.5px;color:var(--text-2);text-decoration:none;padding:6px 10px;border-radius:6px}
+      .nav-links a:hover{color:var(--text);background:var(--bg-subtle)}
+      .nav-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+      .nav-meta{font-size:12.5px;color:var(--text-3)}
+      .btn{
+        display:inline-flex;align-items:center;gap:7px;
+        font-size:13.5px;font-weight:500;line-height:1;
+        padding:8px 14px;border-radius:7px;border:1px solid var(--border-strong);
+        background:var(--surface);color:var(--text);text-decoration:none;
+        box-shadow:var(--shadow-sm);transition:border-color .15s, background .15s;
+      }
+      .btn:hover{border-color:var(--text-3)}
+      .btn.primary{background:var(--text);border-color:var(--text);color:var(--bg)}
+      .btn.primary:hover{opacity:.88}
+
+      section[id],.app-shell[id]{scroll-margin-top:72px}
+      /* ---------- intro ---------- */
+      .lock-pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:.01em;color:var(--accent-text);background:var(--accent-soft);border:1px solid color-mix(in srgb, var(--accent) 22%, transparent);border-radius:999px;padding:5px 11px 5px 9px;margin-bottom:20px}
+      .lock-dot{width:7px;height:7px;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px color-mix(in srgb, var(--live) 18%, transparent)}
+      .lock-pill .mono{font-size:11px;font-weight:500;color:var(--text-3);letter-spacing:0}
+      .intro{padding:64px 0 40px;max-width:720px}
+      .intro h1{font-size:40px;line-height:1.12;font-weight:600;letter-spacing:-.03em;margin:0 0 16px}
+      .intro p{font-size:17px;color:var(--text-2);margin:0;max-width:600px;letter-spacing:-.005em}
+      .intro p strong{color:var(--text);font-weight:600}
+      .intro-stats{display:flex;flex-wrap:wrap;gap:0;margin-top:34px;border-top:1px solid var(--border-strong)}
+      .istat{padding:16px 28px 4px 0;margin-right:28px}
+      .istat b{display:block;font-size:22px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+      .istat span{font-size:12.5px;color:var(--text-3)}
+
+      /* ---------- app window ---------- */
+      .app-shell{padding-bottom:8px}
+      .window{
+        position:relative;
+        background:var(--surface);border:1px solid var(--border-strong);
+        border-radius:12px;box-shadow:var(--window-shadow);overflow:clip;
+        display:flex;flex-direction:column;
+        height:min(860px,calc(100vh - 88px));height:min(860px,calc(100dvh - 88px));
+        min-height:560px;
+      }
+      /* ---------- scroll gate + facade (desktop app window only) ----------
+         Covered by default: the live frame itself shows through a
+         subtle tinted cover (no poster bitmap — a static capture
+         could never match both color schemes or the fluid window
+         width) and the inner panes are not scroll containers, so
+         wheel / trackpad / touch gestures over the window chain to
+         the page and scroll straight past it. While covered, the
+         frame underneath is inert (see the gate script). Activating
+         (click / Enter / Space on the cover) adds .gate-active: the
+         cover lifts and the panes scroll internally. Esc or a click
+         outside re-covers the window; the live frame stays mounted
+         underneath, so state survives the round trip. */
+      .gate-hint{
+        position:absolute;right:14px;bottom:14px;z-index:20;
+        display:inline-flex;align-items:center;gap:8px;
+        font-size:12px;font-weight:500;line-height:1;color:var(--text-2);
+        background:color-mix(in srgb, var(--surface) 92%, transparent);
+        -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+        border:1px solid var(--border-strong);border-radius:999px;
+        padding:7px 12px;box-shadow:var(--shadow-sm);
+        transition:color .15s, border-color .15s, opacity .15s, visibility .15s;
+      }
+      .gate-hint:hover{color:var(--text);border-color:var(--text-3)}
+      .gate-dot{width:7px;height:7px;border-radius:50%;background:var(--text-3);flex:none}
+      .window.gate-active .gate-hint{opacity:.82}
+      .window.gate-active .gate-dot{background:var(--live);box-shadow:0 0 0 3px color-mix(in srgb, var(--live) 18%, transparent)}
+      /* The hint chip belongs to the active state only — while the
+         window is covered, the facade itself is the affordance. */
+      .window:not(.gate-active) .gate-hint{opacity:0;visibility:hidden;pointer-events:none}
+
+      /* ---------- facade cover ----------
+         Fills the app area under the window chrome exactly (inset
+         below the 42px bar; the window's overflow:clip and rounded
+         corners bound it on all four edges). It is a translucent
+         tint over the live frame rendered underneath, so the
+         covered window is pixel-exact at every viewport width and
+         in light and dark alike, and it can never go stale. It is a
+         real <button>: the whole cover is the click target and it
+         is keyboard-operable on its own. */
+      .cover{
+        position:absolute;top:42px;left:0;right:0;bottom:0;z-index:18;
+        display:block;border:0;margin:0;padding:0;width:100%;
+        background:rgba(12,12,16,.05);cursor:pointer;overflow:hidden;
+        opacity:1;visibility:visible;transform:none;
+        transition:opacity .28s ease, transform .28s ease, background-color .25s ease, visibility 0s linear 0s;
+      }
+      .cover:focus-visible{outline-offset:-2px}
+      .cover:hover,.cover:focus-visible{background:rgba(12,12,16,.11)}
+      .cover-try{
+        position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+        display:inline-flex;align-items:center;gap:9px;
+        font-size:14.5px;font-weight:600;letter-spacing:-.01em;line-height:1;white-space:nowrap;
+        color:var(--on-accent);background:var(--accent);
+        border-radius:999px;padding:12px 22px 12px 18px;
+        box-shadow:0 14px 34px -10px rgba(16,16,20,.42), 0 3px 10px rgba(16,16,20,.18);
+        opacity:.94;transition:opacity .2s ease, transform .2s ease;
+      }
+      .cover:hover .cover-try,.cover:focus-visible .cover-try{opacity:1;transform:translate(-50%,-50%) scale(1.045)}
+      .window.gate-active .cover{
+        opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);
+        transition:opacity .28s ease, transform .28s ease, visibility 0s linear .28s;
+      }
+      @media (min-width:901px){
+        .window:not(.gate-active) .side,
+        .window:not(.gate-active) .grid,
+        .window:not(.gate-active) .list,
+        .window:not(.gate-active) .empty{
+          overflow-y:hidden;overscroll-behavior:auto;scrollbar-width:none;
+        }
+        .window:not(.gate-active) .side::-webkit-scrollbar,
+        .window:not(.gate-active) .grid::-webkit-scrollbar,
+        .window:not(.gate-active) .list::-webkit-scrollbar{width:0;height:0}
+      }
+      @media (max-width:900px){
+        /* Mobile layout flows with the page — no gate, no chip, no cover. */
+        .gate-hint{display:none}
+        .cover{display:none}
+      }
+      @media (prefers-reduced-motion: reduce){
+        .gate-hint{transition:none}
+        .cover,.cover-try{transition:none}
+      }
+      .window-bar{
+        flex:none;
+        display:flex;align-items:center;gap:12px;height:42px;padding:0 14px;
+        border-bottom:1px solid var(--border);background:var(--bg-subtle);
+      }
+      .dots{display:flex;gap:7px}
+      .dots i{width:11px;height:11px;border-radius:50%;background:var(--border-strong);display:block}
+      .url-pill{
+        flex:0 1 340px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:7px;
+        font-size:12px;color:var(--text-2);background:var(--surface);
+        border:1px solid var(--border);border-radius:6px;padding:4px 12px;
+      }
+      .url-pill svg{flex:none}
+      .window-bar .wb-note{font-size:12px;color:var(--text-3);white-space:nowrap}
+      @media (max-width:640px){.window-bar .wb-note{display:none}}
+
+      .app{display:grid;grid-template-columns:232px 1fr;flex:1 1 auto;min-height:0}
+
+      /* sidebar */
+      .side{
+        border-right:1px solid var(--border);padding:18px 12px 20px;background:var(--bg-subtle);
+        display:flex;flex-direction:column;gap:22px;
+        align-self:stretch;min-height:0;
+        overflow-y:auto;overscroll-behavior:contain;
+        scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent;
+      }
+      .side::-webkit-scrollbar{width:6px}
+      .side::-webkit-scrollbar-track{background:transparent}
+      .side::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:999px}
+      .side::-webkit-scrollbar-thumb:hover{background:var(--text-3)}
+      .side h4{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3);margin:0 10px 8px}
+      .side nav{display:flex;flex-direction:column;gap:1px}
+      .facet{
+        display:flex;align-items:center;gap:8px;width:100%;text-align:left;
+        background:none;border:0;border-radius:6px;padding:6px 10px;
+        font-size:13.5px;color:var(--text-2);font-weight:500;
+      }
+      .facet:hover{background:var(--surface-hover);color:var(--text)}
+      .facet[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-text)}
+      .facet .count{margin-left:auto;font-size:11.5px;color:var(--text-3);font-variant-numeric:tabular-nums}
+      .facet[aria-pressed="true"] .count{color:var(--accent-text)}
+      .dot{width:7px;height:7px;border-radius:50%;flex:none}
+      .dot.shipped{background:var(--live)} .dot.experimental{background:var(--exp)} .dot.deprecated{background:var(--arch)}
+      .side-foot{padding:10px;border-top:1px solid var(--border);font-size:12px;color:var(--text-3);line-height:1.5}
+      .side-foot b{color:var(--text-2);font-weight:600}
+
+      /* main pane */
+      .main{min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+      .toolbar{padding:16px 20px 0;flex:none}
+      .results-meta{flex:none}
+      .search-row{display:flex;gap:10px;flex-wrap:wrap}
+      .search{
+        flex:1 1 280px;display:flex;align-items:center;gap:9px;
+        border:1px solid var(--border-strong);border-radius:8px;background:var(--surface);
+        padding:0 12px;height:40px;transition:border-color .15s, box-shadow .15s;
+      }
+      .search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+      .search svg{flex:none;color:var(--text-3)}
+      .search input{flex:1;min-width:0;border:0;background:none;color:var(--text);font:inherit;font-size:14.5px;height:100%}
+      .search input:focus{outline:none}
+      .search input::placeholder{color:var(--text-3)}
+      .search kbd{
+        font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text-3);
+        border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;padding:1px 6px;background:var(--bg-subtle);
+      }
+      .select-wrap{position:relative}
+      .select-wrap select{
+        appearance:none;height:40px;padding:0 30px 0 12px;font:inherit;font-size:13.5px;font-weight:500;
+        color:var(--text);background:var(--surface);border:1px solid var(--border-strong);border-radius:8px;cursor:pointer;
+      }
+      .select-wrap::after{content:"";position:absolute;right:12px;top:50%;width:7px;height:7px;border-right:1.5px solid var(--text-3);border-bottom:1.5px solid var(--text-3);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+      .seg{display:flex;border:1px solid var(--border-strong);border-radius:8px;overflow:hidden;height:40px}
+      .seg button{background:var(--surface);border:0;padding:0 13px;font-size:13px;font-weight:500;color:var(--text-3);display:flex;align-items:center;gap:6px}
+      .seg button + button{border-left:1px solid var(--border)}
+      .seg button[aria-pressed="true"]{background:var(--bg-subtle);color:var(--text)}
+
+      .type-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+      .chip{
+        border:1px solid var(--border);background:var(--surface);color:var(--text-2);
+        font-size:12.5px;font-weight:500;border-radius:999px;padding:5px 11px;
+        display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,color .15s,background .15s;
+      }
+      .chip:hover{border-color:var(--border-strong);color:var(--text)}
+      .chip[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:var(--bg)}
+      .chip .n{font-size:11px;opacity:.65;font-variant-numeric:tabular-nums}
+
+      .applied{display:none;align-items:center;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+      .applied.on{display:flex}
+      .applied .lbl{font-size:12.5px;color:var(--text-3);margin-right:2px}
+      .pill{
+        display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;
+        background:var(--accent-soft);color:var(--accent-text);border:1px solid transparent;
+        border-radius:999px;padding:4px 6px 4px 11px;
+      }
+      .pill button{border:0;background:none;color:inherit;font-size:14px;line-height:1;padding:2px 5px;border-radius:50%}
+      .pill button:hover{background:color-mix(in srgb, currentColor 14%, transparent)}
+      .clear-all{border:0;background:none;font-size:12.5px;font-weight:500;color:var(--text-2);text-decoration:underline;text-underline-offset:3px;padding:4px}
+      .clear-all:hover{color:var(--text)}
+
+      .results-meta{display:flex;align-items:baseline;gap:10px;padding:18px 20px 12px}
+      .results-meta b{font-size:13.5px;font-weight:600}
+      .results-meta span{font-size:12.5px;color:var(--text-3)}
+
+      .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:12px;padding:0 20px 22px;align-items:start;
+        flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+        scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
+      .grid::-webkit-scrollbar,.list::-webkit-scrollbar{width:6px}
+      .grid::-webkit-scrollbar-track,.list::-webkit-scrollbar-track{background:transparent}
+      .grid::-webkit-scrollbar-thumb,.list::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:999px}
+      .grid::-webkit-scrollbar-thumb:hover,.list::-webkit-scrollbar-thumb:hover{background:var(--text-3)}
+      .card{
+        text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:10px;
+        padding:16px 16px 14px;display:flex;flex-direction:column;gap:0;width:100%;
+        transition:border-color .15s, box-shadow .15s, transform .15s;
+      }
+      .card:hover{border-color:var(--border-strong);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+      .card-top{display:flex;align-items:flex-start;gap:11px}
+      .tile{
+        width:36px;height:36px;flex:none;border-radius:8px;display:grid;place-items:center;
+        background:var(--bg-subtle);border:1px solid var(--border);
+        font-family:"JetBrains Mono",monospace;font-size:12.5px;font-weight:500;color:var(--text-2);
+      }
+      .card h3{font-size:14.5px;font-weight:600;letter-spacing:-.01em;margin:1px 0 0;line-height:1.3}
+      .card .ver{font-size:11.5px;color:var(--text-3);font-family:"JetBrains Mono",monospace}
+      .card p{font-size:13px;color:var(--text-2);line-height:1.55;margin:10px 0 12px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;min-height:80px}
+      .card-tags{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 12px}
+      .card-tags .tag{font-size:11px;padding:1px 7px}
+      .conn-link{display:block;width:100%;text-align:left;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:13px;color:var(--text-2);margin-bottom:6px}
+      .conn-link:hover{border-color:var(--border-strong);color:var(--text)}
+      .conn-link b{color:var(--text);font-weight:600}
+      .conn-link .ck{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--accent-text)}
+      .side nav.tags-nav{max-height:none;overflow:visible}
+      .lrow{grid-template-columns:30px minmax(150px,1.4fr) 110px minmax(120px,1fr) 90px}
+      .card-meta{margin-top:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3);flex-wrap:wrap;border-top:1px solid var(--border);padding-top:11px}
+      .card-meta .st{display:inline-flex;align-items:center;gap:6px;font-weight:500;color:var(--text-2)}
+      .card-meta .sep{width:3px;height:3px;border-radius:50%;background:var(--border-strong)}
+      .card-meta .open{margin-left:auto;font-weight:500;color:var(--accent-text);opacity:0;transition:opacity .15s}
+      .card:hover .open,.card:focus-visible .open{opacity:1}
+
+      /* list view */
+      .list{display:none;padding:0 20px 22px;flex-direction:column;
+        flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+        scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
+      .list.on{display:flex}
+      .grid.off{display:none}
+      .lrow{
+        display:grid;grid-template-columns:30px minmax(150px,1.2fr) 110px 130px 110px 90px;gap:14px;align-items:center;
+        padding:11px 10px;border:0;border-bottom:1px solid var(--border);background:none;text-align:left;width:100%;
+        font-size:13px;color:var(--text-2);
+      }
+      button.lrow:hover{background:var(--surface-hover)}
+      .lrow.head{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);cursor:default;padding-top:2px}
+      .lrow.head:hover{background:none}
+      .lrow .nm{font-weight:600;color:var(--text);font-size:13.5px;letter-spacing:-.01em}
+      .lrow .st{display:inline-flex;align-items:center;gap:6px;font-weight:500}
+      .lrow .tile{width:28px;height:28px;border-radius:6px;font-size:10.5px}
+
+      .empty{display:none;padding:64px 24px 72px;text-align:center;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+      .empty.on{display:block}
+      .empty .e-ic{width:44px;height:44px;margin:0 auto 14px;border:1px solid var(--border);border-radius:10px;display:grid;place-items:center;color:var(--text-3);background:var(--bg-subtle)}
+      .empty h3{font-size:15.5px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+      .empty p{font-size:13.5px;color:var(--text-2);margin:0 auto 18px;max-width:360px}
+
+      /* drawer */
+      .scrim{position:fixed;inset:0;background:rgba(10,10,14,.42);opacity:0;pointer-events:none;transition:opacity .22s;z-index:60}
+      .scrim.on{opacity:1;pointer-events:auto}
+      .drawer{
+        position:fixed;top:0;right:0;bottom:0;width:min(430px,94vw);z-index:61;
+        background:var(--surface);border-left:1px solid var(--border-strong);box-shadow:var(--shadow-lg);
+        transform:translateX(102%);transition:transform .26s cubic-bezier(.32,.72,.24,1);
+        overflow-y:auto;padding:26px 26px 34px;
+      }
+      .drawer.on{transform:none}
+      .drawer-close{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:7px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);font-size:15px;line-height:1}
+      .drawer-close:hover{color:var(--text);border-color:var(--border-strong)}
+      .d-head{display:flex;gap:13px;align-items:flex-start;padding-right:34px}
+      .d-head .tile{width:44px;height:44px;border-radius:10px;font-size:14px}
+      .d-head h3{font-size:19px;font-weight:600;letter-spacing:-.02em;margin:0;line-height:1.25}
+      .d-head .ver{font-size:12px;color:var(--text-3);font-family:"JetBrains Mono",monospace}
+      .d-desc{font-size:14px;color:var(--text-2);line-height:1.6;margin:16px 0 4px}
+      .d-status{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;border:1px solid var(--border);border-radius:999px;padding:4px 11px;margin-top:14px}
+      .d-table{margin-top:22px;border-top:1px solid var(--border)}
+      .d-row{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px}
+      .d-row dt{color:var(--text-3);font-size:12.5px;padding-top:1px}
+      .d-row dd{margin:0;font-weight:500}
+      .tags{display:flex;flex-wrap:wrap;gap:5px}
+      .tag{font-size:12px;font-weight:500;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;padding:2px 8px;color:var(--text-2)}
+      .d-actions{display:flex;gap:9px;margin-top:24px;flex-wrap:wrap}
+
+      /* ---------- below the product ---------- */
+      section.block{padding:84px 0 0}
+      .block h2{font-size:26px;font-weight:600;letter-spacing:-.025em;margin:0 0 10px;line-height:1.2}
+      .block .lede{font-size:16px;color:var(--text-2);max-width:560px;margin:0}
+      .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:40px}
+      .step{border-top:1px solid var(--border-strong);padding-top:18px}
+      .step .num{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent-text);font-weight:500}
+      .step h3{font-size:15.5px;font-weight:600;letter-spacing:-.01em;margin:8px 0 7px}
+      .step p{font-size:14px;color:var(--text-2);margin:0;line-height:1.6}
+      .step p code{font-family:"JetBrains Mono",monospace;font-size:12.5px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:5px;padding:1px 5px}
+
+      .fields{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:36px;border-top:1px solid var(--border)}
+      .field{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid var(--border);align-items:baseline}
+      .field b{font-size:14px;font-weight:600;min-width:128px;letter-spacing:-.01em}
+      .field span{font-size:13.5px;color:var(--text-2)}
+
+      .refs{margin-top:40px;border:1px solid var(--border);border-radius:12px;padding:26px 28px;background:var(--surface)}
+      .refs h3{font-size:15px;font-weight:600;margin:0 0 8px;letter-spacing:-.01em}
+      .refs p{font-size:13.5px;color:var(--text-2);margin:0 0 14px;max-width:640px;line-height:1.6}
+      .refs ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+      .refs li{font-size:13.5px;color:var(--text-2)}
+      .refs a{color:var(--accent-text);font-weight:500;text-decoration:none}
+      .refs a:hover{text-decoration:underline;text-underline-offset:3px}
+      .refs .src{color:var(--text-3)}
+
+      footer{margin-top:88px;border-top:1px solid var(--border);padding:26px 0 40px}
+      .foot-in{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;font-size:12.5px;color:var(--text-3)}
+      .foot-in .sp{flex:1}
+
+      @media (max-width:900px){
+        .window{height:auto;min-height:0;max-height:none;display:block}
+        .app{grid-template-columns:1fr;min-height:0;flex:none}
+        .main{overflow:visible;min-height:0}
+        .grid,.list,.empty{flex:none;min-height:0;overflow:visible;overscroll-behavior:auto}
+        .side{border-right:0;border-bottom:1px solid var(--border);flex-direction:row;flex-wrap:wrap;gap:14px 26px;padding:14px 16px;position:static;align-self:auto;max-height:none;overflow:visible;overscroll-behavior:auto}
+        .side nav.tags-nav{max-height:none;overflow:visible}
+        .side h4{margin:0 0 6px}
+        .side nav{flex-direction:row;flex-wrap:wrap}
+        .facet{width:auto;padding:6px 9px}
+        .facet .count{margin-left:5px}
+        .side-foot{display:none}
+        .steps{grid-template-columns:1fr;gap:26px}
+        .fields{grid-template-columns:1fr}
+        .intro{padding:52px 0 32px}
+        .intro h1{font-size:32px}
+      }
+      @media (max-width:640px){
+        .wrap{padding:0 16px}
+        .nav-links{display:none}
+        .nav-meta{display:none}
+        .grid{grid-template-columns:1fr;padding:0 14px 18px}
+        .list{padding:0 14px 18px}
+        .lrow{grid-template-columns:30px 1fr 96px}
+        .lrow .col-stack,.lrow .col-links{display:none}
+        .lrow.head .col-stack,.lrow.head .col-links{display:none}
+        .toolbar{padding:14px 14px 0}
+        .results-meta{padding:16px 14px 10px}
+        .istat{margin-right:18px;padding-right:18px}
+        section.block{padding:60px 0 0}
+      }
+      @media (prefers-reduced-motion: reduce){
+        html{scroll-behavior:auto}
+        .drawer,.scrim,.card,.btn,.search{transition:none}
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap nav-in">
+        <a class="brand" href="#top"><span class="brand-mark">◈</span>Catalog</a>
+        <nav class="nav-links" aria-label="Page">
+          <a href="#index">Index</a>
+          <a href="#how">How it works</a>
+          <a href="#record">The record</a>
+          <a href="#surfaces">Surfaces</a>
+          <a href="#design">Design notes</a>
+        </nav>
+        <div class="nav-right">
+          <span class="nav-meta">85 real products, one index</span>
+          <a class="btn" href="#index">Browse the index</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="wrap">
+        <div class="intro">
+          <div class="lock-pill"><span class="lock-dot" aria-hidden="true"></span>Direction locked — V4 <span class="mono">· Nov 2026</span></div>
+          <h1>Every project I build,<br />in one place.</h1>
+          <p>Catalog is the tool I use to keep track of the software I develop, maintain, and deploy. Below is the <strong>real product slice</strong> of that catalog — all <strong>85 products</strong>, shown through a public-safe projection. Status here is engineering maturity, not whether something happens to be running right now.</p>
+          <div class="intro-stats" aria-label="About the catalog">
+            <div class="istat"><b>85</b><span>products, shown in full</span></div>
+            <div class="istat"><b>30</b><span>shipped</span></div>
+            <div class="istat"><b>47</b><span>experimental</span></div>
+            <div class="istat"><b>8</b><span>deprecated</span></div>
+            <div class="istat"><b>~2,250</b><span>entities in the private index</span></div>
+            <div class="istat"><b>~40</b><span>surfaces in the private index</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- ================= THE PRODUCT ================= -->
+      <div class="wrap app-shell" id="index">
+        <div class="window" id="catalogWindow" data-scroll-gate="inactive" role="region" aria-label="Catalog application">
+          <div class="window-bar" aria-hidden="true">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="url-pill">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              catalog — products
+            </span>
+            <span class="wb-note mono">85 real products</span>
+          </div>
+
+          <div class="app">
+            <!-- Sidebar facets -->
+            <aside class="side" aria-label="Filters">
+              <div>
+                <h4>Status — engineering maturity</h4>
+                <nav id="statusNav"></nav>
+              </div>
+              <div>
+                <h4>Tag</h4>
+                <nav id="tagNav" class="tags-nav"></nav>
+              </div>
+              <div class="side-foot">
+                <b>Real products, public-safe fields only.</b> Each record below carries just ID, name, kind, status, summary, tags, a public URL where one exists, and connections to other products on this page.
+              </div>
+            </aside>
+
+            <!-- Main pane -->
+            <div class="main">
+              <div class="toolbar">
+                <div class="search-row">
+                  <label class="search">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+                    <input id="q" type="search" placeholder="Search products, summaries, tags, IDs…" autocomplete="off" aria-label="Search products" />
+                    <kbd>⌘K</kbd>
+                  </label>
+                  <div class="select-wrap">
+                    <select id="sort" aria-label="Sort projects">
+                      <option value="name">Name A–Z</option>
+                      <option value="name-desc">Name Z–A</option>
+                      <option value="status">Status — shipped first</option>
+                      <option value="connections">Most connected</option>
+                      <option value="tags">Most tags</option>
+                    </select>
+                  </div>
+                  <div class="seg" role="group" aria-label="View">
+                    <button id="viewGrid" aria-pressed="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+                      Grid
+                    </button>
+                    <button id="viewList" aria-pressed="false">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="2.6" rx="1.3"/><rect x="3" y="10.7" width="18" height="2.6" rx="1.3"/><rect x="3" y="17.4" width="18" height="2.6" rx="1.3"/></svg>
+                      List
+                    </button>
+                  </div>
+                </div>
+                <div class="applied" id="applied" aria-live="polite"></div>
+              </div>
+
+              <div class="results-meta">
+                <b id="resCount"></b>
+                <span id="resNote"></span>
+              </div>
+
+              <div class="grid" id="grid"></div>
+              <div class="list" id="list"></div>
+
+              <div class="empty" id="empty">
+                <div class="e-ic">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/><path d="M8.5 11h5"/></svg>
+                </div>
+                <h3>No products match</h3>
+                <p>Nothing in the 85 products fits that combination. Try a shorter search, or clear the filters to see everything again.</p>
+                <button class="btn primary" id="emptyClear">Clear all filters</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="cover" id="gateCover" aria-label="Try the interactive catalog">
+            <span class="cover-try">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+              Try It
+            </span>
+          </button>
+          <button type="button" class="gate-hint" id="gateHint" aria-pressed="false">
+            <span class="gate-dot" aria-hidden="true"></span>
+            <span id="gateLabel">Click to browse — scrolling passes through</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= HOW IT WORKS ================= -->
+      <div class="wrap">
+        <section class="block" id="how">
+          <h2>How the index stays true</h2>
+          <p class="lede">The products above are one public slice of a much larger private catalog — roughly 2,250 entities across about 40 surfaces. Only the product records are shown here, and only in the public-safe form described below.</p>
+          <div class="steps">
+            <div class="step">
+              <span class="num">01</span>
+              <h3>Authored once</h3>
+              <p>Every entity in the private catalog is an authored record with a stable ID — like <code>product.jobkit</code> — a kind, a surface, and a status. Products are one kind among many; actions, services, capabilities, endpoints, and decisions fill out the rest of the index.</p>
+            </div>
+            <div class="step">
+              <span class="num">02</span>
+              <h3>Status means maturity</h3>
+              <p>Status is engineering maturity, not whether something is running. <em>Shipped</em> means built and released as a product, <em>experimental</em> means real but still being proven, and <em>deprecated</em> means kept in the index for the record, not for new work.</p>
+            </div>
+            <div class="step">
+              <span class="num">03</span>
+              <h3>Public means projected</h3>
+              <p>Nothing on this page is the private record itself. Each product is projected through a closed public shape, so fields that exist privately — paths, entrypoints, and business or ownership detail — structurally cannot appear here.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="record">
+          <h2>What a public record holds</h2>
+          <p class="lede">Every product on this page carries the same public fields — and nothing else. Open any card above to see one in full, including its connections to other products in the set.</p>
+          <div class="fields">
+            <div class="field"><b>ID</b><span>The stable catalog identifier, e.g. product.nicos-catalog. Connections point at these IDs.</span></div>
+            <div class="field"><b>Name</b><span>The product’s public name, as authored in the catalog.</span></div>
+            <div class="field"><b>Kind</b><span>“product” for everything on this page — the private index holds many other kinds.</span></div>
+            <div class="field"><b>Status</b><span>Shipped, experimental, or deprecated — engineering maturity.</span></div>
+            <div class="field"><b>Summary</b><span>A short public description, drawn from the catalog record. All 85 products on this page have one.</span></div>
+            <div class="field"><b>Tags</b><span>The product’s catalog tags, with two corpus-wide markers removed in the public projection: “manual” (it was on all 85) and “product” (it just repeats the kind). The sidebar filter lists only tags used by 3 or more products; each record still shows all of its own tags.</span></div>
+            <div class="field"><b>URL</b><span>A public URL, only where one is allowlisted. Just 2 of the 85 products carry one.</span></div>
+            <div class="field"><b>Connections</b><span>Typed links — bridges_to, affiliated_with, replaces, supports — kept only where both products are in this public set.</span></div>
+          </div>
+        </section>
+
+        <section class="block" id="surfaces">
+          <h2>Where this page sits</h2>
+          <p class="lede">This showcase is the public front door for the catalog — it sits above the other surfaces. It tells the catalog story and shows the full product slice; the engine and the working tools live behind it, each doing its own job.</p>
+          <div class="steps">
+            <div class="step">
+              <span class="num">01</span>
+              <h3>This showcase — the front door</h3>
+              <p>You’re looking at it: what the catalog is, all 85 products in their public-safe form, and how the privacy boundary works. The product slice shown here is the <strong>Catalog Gallery’s</strong> data — the privacy-safe public portfolio — rendered standalone on this page.</p>
+            </div>
+            <div class="step">
+              <span class="num">02</span>
+              <h3>The engine — try it live</h3>
+              <p>The portable <code>nicos-catalog</code> engine (Apache-2.0) is what turns authored entity files into a validated, searchable catalog. The Explorer is its live demo, running on synthetic data.</p>
+              <p style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+                <a class="btn primary" href="https://nicos-catalog-explorer.nstranquist.workers.dev/" target="_blank" rel="noopener">Try the engine — open the Explorer</a>
+                <a class="btn" href="https://github.com/nstranquist/nicos-catalog" target="_blank" rel="noopener">Engine repo on GitHub</a>
+              </p>
+            </div>
+            <div class="step">
+              <span class="num">03</span>
+              <h3>Atlas — internal only</h3>
+              <p>Atlas is the operator tooling over the full private index — the working surface for maintaining the catalog day to day. It’s internal by design, so it isn’t linked from this public page.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="design">
+          <div class="refs">
+            <h3>Design notes</h3>
+            <p>This page follows the product-design philosophy behind Linear, Vercel, and Raycast: clarity over decoration, typography and spacing doing the work, a near-monochrome palette with color reserved for status. The catalog itself is modeled on Raycast’s extension store — a grid dense enough to feel like hundreds of projects, quiet enough to scan. Search and faceted filtering follow NN/g’s research on listing pages: prominent search, plainly labeled filters with counts, and applied filters you can see and remove.</p>
+            <ul>
+              <li><a href="https://studiomaydit.com/blog/linear-vercel-raycast-aesthetic" target="_blank" rel="noopener">The Linear / Vercel / Raycast aesthetic</a> <span class="src">— Studio Maydit, on restraint as a design system</span></li>
+              <li><a href="https://www.nngroup.com/reports/ecommerce-ux-search-including-faceted-search" target="_blank" rel="noopener">Ecommerce UX: search &amp; faceted navigation</a> <span class="src">— Nielsen Norman Group research report</span></li>
+              <li><span class="src">Component-level breakdowns of Linear’s and Raycast’s interfaces — spell-ui design teardowns</span></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        <div class="wrap foot-in">
+          <span><b style="color:var(--text-2)">Catalog</b> — a personal index of software I develop, maintain, and deploy — products shown here, ~2,250 entities in the full private index.</span>
+          <span class="sp"></span>
+          <span class="mono" style="font-size:11.5px">V4 · locked Nov 2026</span>
+          <span>85 real products · public-safe projection.</span>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Drawer -->
+    <div class="scrim" id="scrim"></div>
+    <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dName" hidden>
+      <button class="drawer-close" id="drawerClose" aria-label="Close record">✕</button>
+      <div id="drawerBody"></div>
+    </aside>
+
+    <script>
+      var PRODUCTS = [
+ {
+  "id": "product.agent-commerce-cloud",
+  "name": "Agent Commerce Control Plane (hosted)",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "The deploy half (Slice 7) of the Agent Commerce Control Plane: a non-custodial Cloudflare Worker + D1 that turns the local ndev ai commerce CLI's governance into a shared, always-on control plane. It never holds a key or moves funds.",
+  "tags": [
+   "agent-commerce",
+   "non-custodial",
+   "governance",
+   "audit-ledger",
+   "metering",
+   "mcp",
+   "edge",
+   "holdco",
+   "off-desk"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-crypto-platform"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.crypto-desk"
+   }
+  ]
+ },
+ {
+  "id": "product.agent-prompt-profile",
+  "name": "Operator Prompt Profile",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Svelte 5 + Vite + @nicos/garrid-ds app over the agent-user-prompts harvest. The localhost-only Goals surface preserves bounded original human intent in a private durable ledger, reports its size/retention state, and authors validated catalog product/feature/group pins and a retained-prompt primary goal. A manual…",
+  "tags": [
+   "svelte5",
+   "vite",
+   "garrid-ds",
+   "agent-prompts",
+   "operator-profile",
+   "local-tool",
+   "open",
+   "prompt profile",
+   "agent-user-prompts",
+   "conversation-goals",
+   "original-human-intent",
+   "session-pins",
+   "catalog-pins",
+   "private-ledger",
+   "manual-goals",
+   "standing-visions",
+   "prompt-time-capture",
+   "user-prompt-submit-hook",
+   "intent-candidates",
+   "pending",
+   "promote",
+   "reject",
+   "intent pending promote reject",
+   "intent catalog subjects",
+   "pending-promote-reject",
+   "exact-user-excerpts",
+   "exact-source-hashes",
+   "bounded-telemetry-dimensions",
+   "shared-goal-store-lock",
+   "intent-catalog-subjects",
+   "catalog subjects",
+   "incremental-transcript-cursors",
+   "catalog-atlas-deep-links",
+   "how do I open the operator prompt profile",
+   "open operator prompt profile",
+   "agent-user-prompts open"
+  ]
+ },
+ {
+  "id": "product.agenttrace",
+  "name": "AgentTrace",
+  "kind": "product",
+  "status": "deprecated",
+  "summary": "Local multi-agent session observatory MVP.",
+  "tags": [
+   "agent-ops",
+   "observability",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.aperture",
+  "name": "Exchange Demo",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "A SvelteKit 5 Coinbase-style exchange shell whose copilot can actually trade (buy/sell/watchlist with a confirm gate), persist conversations, and record every call to the ndev usage ledger. The demo is the sales asset; the product thesis is a drop-in copilot SDK with built-in usage metering + cost governance —…",
+  "tags": [
+   "developer",
+   "copilot",
+   "sdk"
+  ]
+ },
+ {
+  "id": "product.atelier-forge",
+  "name": "Forge",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Side-by-side with apps/nicos-guidelines-demo (Guidelines Demo, Garrid DS Console shell). This app reinvents the product chrome (portal → floor rail → stage: Heat, Stations, Kiln, Pulse, Stream, Ledger, Chamber) using design tokens + Motion only — not a Console/AppShell clone.",
+  "tags": [
+   "dogfood",
+   "evaluation",
+   "invent",
+   "react",
+   "go",
+   "edge"
+  ],
+  "connections": [
+   {
+    "kind": "affiliated_with",
+    "target": "product.nicos-guidelines-demo"
+   }
+  ]
+ },
+ {
+  "id": "product.bellwether",
+  "name": "Bellwether",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Point-in-time market research and paper trading for crypto and equities on keyless data. Every stored fact has an event time and a known_at. Research reads go through an as-of handle. Promotion refuses a strategy whose deflated Sharpe cannot survive the trial count. Desk retrieval is cdesk. This cell is a thin…",
+  "tags": [
+   "crypto",
+   "quant",
+   "point-in-time",
+   "go",
+   "sqlite",
+   "external",
+   "desk-research"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.tape"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-crypto-platform"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.crypto-desk"
+   }
+  ]
+ },
+ {
+  "id": "product.cadence",
+  "name": "Cadence",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Built and verified live (menubar tray + AI debrief + headless E2E); monetized and packaged via the Ed25519 license spine — now backed by the durable license backend (service.license: HMAC'd Lemon Squeezy webhook + issued-license ledger + key recovery, not just the prototype .mjs). The prod AI path is resolved…",
+  "tags": [
+   "consumer",
+   "focus",
+   "menubar"
+  ]
+ },
+ {
+  "id": "product.catalog-atlas-shell",
+  "name": "Catalog Atlas Shell",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Thin macOS Dock + menubar presentation shell over the existing Catalog Atlas daemon (catalog-serve on loopback :7788). Loads Atlas in system WebKit, probes /api/status for menubar health, and routes daemon install/status/ diagnose to the opt-in launchd surface. Does not embed catalog projection or ship a second…",
+  "tags": [
+   "desktop",
+   "swiftui",
+   "catalog-atlas",
+   "menubar",
+   "webkit",
+   "dogfood",
+   "low-footprint"
+  ]
+ },
+ {
+  "id": "product.catalog-constellation",
+  "name": "Catalog Map",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Standalone localhost desktop/web gravity map over the canonical Catalog Atlas Constellation API. It preserves a focused orbital portfolio experience without restoring the retired Python snapshotter, direct Git fan-out, or Atlas SQLite reads.",
+  "tags": [
+   "desktop",
+   "web",
+   "catalog",
+   "portfolio",
+   "dogfood"
+  ]
+ },
+ {
+  "id": "product.claimguard",
+  "name": "ClaimGuard",
+  "kind": "product",
+  "status": "deprecated",
+  "summary": "Fail-closed verified-claims gate for AI text.",
+  "tags": [
+   "honesty",
+   "careers",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.cliptide",
+  "name": "Cliptide",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Secure, cross-platform (mobile + web + desktop + Chrome extension) AI content engine. Three mechanics on one spine: (1) long-form video → AI vertical shorts (moment-selection, reframe, animated captions, virality scoring), (2) save-from-anywhere + AI repurpose into per-platform posts + schedule, (3) capture…",
+  "tags": [
+   "consumer",
+   "ai",
+   "video",
+   "social",
+   "creator",
+   "cross-platform"
+  ]
+ },
+ {
+  "id": "product.contextpack",
+  "name": "ContextPack",
+  "kind": "product",
+  "status": "deprecated",
+  "summary": "Budgeted agent context packs with receipts.",
+  "tags": [
+   "agent-ops",
+   "context",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.crypto-ai-saas",
+  "name": "Crypto AI SaaS (Solana)",
+  "kind": "product",
+  "status": "deprecated",
+  "summary": "Archived Solana-native automation + AI SaaS scaffold. Not a desk engine. Do not enroll new trading, perception, or research work here. Use Tape, Bellwether, or nicos-crypto, and search cdesk first.",
+  "tags": [
+   "crypto",
+   "solana",
+   "archived",
+   "external",
+   "off-desk"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-crypto-platform"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.crypto-desk"
+   }
+  ]
+ },
+ {
+  "id": "product.crypto-desk",
+  "name": "Crypto Desk",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Catalog control plane for crypto research, investing, and trading. cdesk is the desk map. If ndev ask and cdesk search disagree on desk work, cdesk wins. Tape, Bellwether, and nicos-crypto stay in their own trees. This product does not place orders or store prints.",
+  "tags": [
+   "crypto",
+   "desk",
+   "cdesk",
+   "catalog",
+   "map",
+   "external"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.tape"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.bellwether"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-crypto-platform"
+   }
+  ]
+ },
+ {
+  "id": "product.docs-puller",
+  "name": "docs-puller",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "The retrieval engine + product. A pure-Go (modernc.org/sqlite, zero cgo) FTS5 + embeddings mirror of any docs corpus, with a measured retrieval eval the rest of the category doesn't publish.",
+  "tags": [
+   "developer",
+   "docs",
+   "retrieval",
+   "oss",
+   "open-core"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.docs-puller-cloud"
+   }
+  ]
+ },
+ {
+  "id": "product.docs-puller-cloud",
+  "name": "docs-puller Cloud",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "The proprietary hosted product built around the standalone docs-puller CLI. It owns the control plane, ingest/search services, console, deployment validators, tenancy, commercial auth, billing/webhook proof, and customer operations. The code and deploy contracts are substantial, but the product is still built, not…",
+  "tags": [
+   "b2b",
+   "docs",
+   "retrieval",
+   "managed-service",
+   "multi-tenant",
+   "billing",
+   "proprietary"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.docs-puller"
+   }
+  ]
+ },
+ {
+  "id": "product.echo",
+  "name": "Echo",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Voice vertical built + verified (capture → on-device dictation/manual → AI cleanup via the local ndev inference gateway → structured, auto-filed note), synced across web/mobile/desktop on the convex-realtime lane. Capture on the phone (where you talk), organize/search on desktop. Remaining before public…",
+  "tags": [
+   "consumer",
+   "voice",
+   "proposed"
+  ]
+ },
+ {
+  "id": "product.edge-ocr",
+  "name": "Edge OCR",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Dogfooded live: Tesseract OCR served across 3 tiers, deployed and auth-gated, screenshot-verified. The reference proof for the edge-sidecar scaffold lane (Cloudflare Worker + Turso + Go native engine).",
+  "tags": [
+   "developer",
+   "ocr",
+   "edge"
+  ]
+ },
+ {
+  "id": "product.elevated",
+  "name": "Elevated",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Wellness consumer app + Elevated Admin dashboard monorepo matching the design references.",
+  "tags": [
+   "consumer",
+   "admin",
+   "wellness",
+   "monorepo",
+   "vite",
+   "react",
+   "typescript",
+   "external",
+   "design-reference"
+  ]
+ },
+ {
+  "id": "product.evidence-vault",
+  "name": "Evidence Vault",
+  "kind": "product",
+  "status": "deprecated",
+  "summary": "Evidence pack verifier (paths + SHA-256).",
+  "tags": [
+   "portfolio",
+   "evals",
+   "evidence",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.field-notes",
+  "name": "Field Notes",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "A synced web + mobile + desktop suite on the supabase-bootstrap scaffold lane (Postgres + Auth + Realtime + RLS). Primarily a scaffold dogfood proving the Supabase lane end-to-end, not yet a go-to-market product.",
+  "tags": [
+   "scaffold",
+   "supabase"
+  ]
+ },
+ {
+  "id": "product.fleetboard",
+  "name": "Fleet Board",
+  "kind": "product",
+  "status": "deprecated",
+  "summary": "Multi-agent parallel work board.",
+  "tags": [
+   "agent-ops",
+   "orchestration",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.flightdeck-hud",
+  "name": "Products HUD",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Native SDK (Vercel Labs) macOS HUD over ndev products list + Catalog Atlas health. Packaged as Flightdeck.app with self-contained feed.sh (no webview).",
+  "tags": [
+   "operator",
+   "native",
+   "desktop",
+   "hud",
+   "ndev",
+   "portfolio",
+   "macOS",
+   "offline-first",
+   "packaged-app"
+  ]
+ },
+ {
+  "id": "product.formloop",
+  "name": "FormLoop",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Human-in-loop form map with non-submit packets.",
+  "tags": [
+   "careers",
+   "forms",
+   "human-in-loop",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.frontier-forge",
+  "name": "Frontier Forge",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "First-person WebGPU survival craft with a shipped local v1 loop: gather, craft, eat, save, respawn, and advance the Worldforge Beacon.",
+  "tags": [
+   "game",
+   "webgpu",
+   "survival-craft"
+  ]
+ },
+ {
+  "id": "product.garrid-board",
+  "name": "Garrid Board",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Garrid Board is the public-facing product slice for the Garrid dashboard design system. The current v0.1 surface combines a localhost demo and install guide, the shadcn-compatible Garrid registry, and the garrid init|add|list CLI.",
+  "tags": [
+   "garrid",
+   "design-system",
+   "dashboard",
+   "component-registry",
+   "shadcn",
+   "localhost"
+  ]
+ },
+ {
+  "id": "product.garrid-factory-cloud",
+  "name": "Garrid Build (governed autonomous software delivery)",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Garrid Build is the outward product name. Garrid Guided Pilot v2 is its provisional $1,500, 14-day entry offer. product.garrid-factory-cloud, apps/garrid-factory-cloud, Factory Cloud, and Agent Control Plane remain stable catalog, implementation, and technical identifiers.",
+  "tags": [
+   "garrid-factory",
+   "garrid-build",
+   "agent-control-plane",
+   "managed-service",
+   "multi-tenant",
+   "metering",
+   "edge",
+   "governed-proof-intake",
+   "jit-capability-broker",
+   "operational-proof-ledger",
+   "managed-author-reviewer"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.agent-commerce-cloud"
+   }
+  ]
+ },
+ {
+  "id": "product.gatherloom",
+  "name": "Gather",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Gatherloom helps a small trusted group notice, make, and keep a life together. Members capture moments offline, answer shared prompts and rituals, and weave their contributions into exportable chapters. It intentionally avoids public follower graphs, popularity counts, ads, and infinite scroll.",
+  "tags": [
+   "consumer",
+   "ios",
+   "native",
+   "swiftui",
+   "offline-first",
+   "social",
+   "content-creation",
+   "go",
+   "sqlite",
+   "cloudflare",
+   "durable-objects",
+   "r2"
+  ]
+ },
+ {
+  "id": "product.grok-viewer",
+  "name": "Grok Viewer",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Native macOS desktop app for following Grok Build conversations in real time: schema-v1 NDJSON live tail via ndev session events --agent grok --follow, FTS session search, markdown rendering, multi-window follow, density modes, and compose mediated by ndev session send with an exclusive verified live owner (it does…",
+  "tags": [
+   "desktop",
+   "swiftui",
+   "grok",
+   "dogfood"
+  ]
+ },
+ {
+  "id": "product.host-inbox",
+  "name": "host-inbox",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Local Go inbox for Unix host job mail in /var/mail. Parses mbox, classifies cron jobs, serves a loopback HTML UI and JSON API, and archives messages with an exclusive lock.",
+  "tags": [
+   "go",
+   "cli",
+   "html",
+   "macos",
+   "cron",
+   "mailbox",
+   "operator",
+   "external"
+  ]
+ },
+ {
+  "id": "product.jobkit",
+  "name": "jobkit",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Local-first Go job-search toolkit. Canonical source is the standalone MIT repo (nstranquist/jobkit).",
+  "tags": [
+   "cli",
+   "go",
+   "oss",
+   "careers",
+   "external-product"
+  ]
+ },
+ {
+  "id": "product.keyring",
+  "name": "Keyring",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "The strongest net-new bet: dogfoods the crown-jewel nvault E2EE engine AND funnels consumers into the #1 revenue product (nvault B2B), on the same account/billing spine. STARTED 2026-06-06 (apps/keyring, evidence docs/active/06-06-2130-saas-kit-and-keyring.md): rendered from the Convex SaaS kit (auth + Stripe…",
+  "tags": [
+   "consumer",
+   "secrets",
+   "zero-knowledge"
+  ]
+ },
+ {
+  "id": "product.lifestyle-city-loft",
+  "name": "Lifestyle City Loft",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Polished lifestyle-sim vertical slice: walk a metro loft (Blender GLB), interact with lifestyle props (sculptRuntime crate, lamp, window, scan sample, lounge, coffee, daybed, vinyl, bookshelf), pause/Controls menu, stack showcase of the eval toolchain.",
+  "tags": [
+   "consumer",
+   "game",
+   "lifestyle-sim",
+   "threejs",
+   "blender",
+   "photogrammetry",
+   "vertical-slice",
+   "external",
+   "external-product",
+   "portfolio"
+  ]
+ },
+ {
+  "id": "product.lumen-relay",
+  "name": "Unity Courier",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Unity 6 LTS arcade courier used to dogfood the Unity CLI and a docs-puller unity corpus.",
+  "tags": [
+   "lab",
+   "stack-pilot",
+   "unity",
+   "game",
+   "external"
+  ]
+ },
+ {
+  "id": "product.marginalia",
+  "name": "Read Later",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Synced web + mobile + desktop suite on Convex Realtime (stack-scaffold output). Biggest proven market in the slate (Readwise live-confirmed; Pocket sunset → gap). Reuses docs-puller retrieval tech for library search. Monetization rides the shared Ed25519 license spine, now backed by the durable license backend…",
+  "tags": [
+   "consumer",
+   "read-later",
+   "local-first",
+   "slipwright"
+  ]
+ },
+ {
+  "id": "product.mcp-vault",
+  "name": "MCP Vault",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "A native macOS desktop app (Tauri 2 + Solid.js) for browsing, configuring, testing, and syncing Model Context Protocol servers across Claude Code, Claude Desktop, Cursor, VS Code, and Windsurf. The most release-ready product in the portfolio — a full signed/notarized/QA/auto-update pipeline is built and…",
+  "tags": [
+   "developer",
+   "mcp",
+   "desktop",
+   "macos"
+  ]
+ },
+ {
+  "id": "product.mcpgate",
+  "name": "MCP Gate",
+  "kind": "product",
+  "status": "deprecated",
+  "summary": "Local MCP tool-call policy allow/deny gate.",
+  "tags": [
+   "agent-ops",
+   "mcp",
+   "security",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.meridian",
+  "name": "Next Demo",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Next.js App Router UI island (shadcn / Base UI) with marketing, auth, and a multi-page SaaS dashboard.",
+  "tags": [
+   "lab",
+   "stack-pilot",
+   "nextjs",
+   "shadcn",
+   "external"
+  ]
+ },
+ {
+  "id": "product.mundial",
+  "name": "Mundial",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "A web + mobile + desktop app, built through the Garrid factory (convex-realtime lane), that predicts the 2026 World Cup with a genuinely state-of-the-art football model and turns it into bracket recommendations, fair odds, and value bets vs the market.",
+  "tags": [
+   "consumer",
+   "sports",
+   "prediction",
+   "betting",
+   "analytics",
+   "cross-platform"
+  ]
+ },
+ {
+  "id": "product.ncli",
+  "name": "ncli",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Standalone Rust clap + ratatui + crossterm CLI shipping essential ndev / nship / ngtm surfaces.",
+  "tags": [
+   "cli",
+   "rust",
+   "ratatui",
+   "clap",
+   "agent",
+   "external"
+  ]
+ },
+ {
+  "id": "product.ndev-pressure",
+  "name": "NDev Pressure",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Native macOS desktop + menu bar app for visualizing and controlling ndev session pressure. Thin SwiftUI shell over JSON contracts for host free-memory / CPU / swap / agent-tree pressure, adaptive internal-SSD write observation, bounded likely-writer attribution, operator-confirmed memory-only path tracing, host…",
+  "tags": [
+   "desktop",
+   "swiftui",
+   "session-pressure",
+   "memory",
+   "cpu",
+   "host-guard",
+   "work-queue",
+   "backpressure",
+   "attribution",
+   "calibration-cohorts",
+   "dogfood",
+   "disk-writes",
+   "ssd-observability",
+   "sqlite"
+  ]
+ },
+ {
+  "id": "product.nico-portfolio",
+  "name": "Nico Portfolio",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Astro portfolio candidate at apps/nico-portfolio. It includes deterministic resume sync, evidence-bounded case studies, a downloadable PDF, metadata contracts, and privacy-minimal first-party telemetry.",
+  "tags": [
+   "careers",
+   "portfolio",
+   "astro",
+   "cloudflare",
+   "local-only",
+   "public-route-disabled",
+   "personal-brand"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-career-profile"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nstranquist.github.io"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.docs-puller"
+   }
+  ]
+ },
+ {
+  "id": "product.nico-portfolio-v2",
+  "name": "Nico Studio Portfolio V2",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Parallel, from-scratch Astro portfolio at apps/nico-portfolio-v2. It presents Nico as a senior full-stack, cloud, and AI systems engineer through a polished, human product-engineering-studio experience rather than a resume template or software-catalog dump.",
+  "tags": [
+   "careers",
+   "portfolio",
+   "astro",
+   "cloudflare",
+   "personal-brand",
+   "product-engineering-studio"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-career-profile"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nstranquist.github.io"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.docs-puller"
+   }
+  ]
+ },
+ {
+  "id": "product.nicos-agent-studio",
+  "name": "Nicos Agent Studio",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Native macOS desktop for parallel coding agents — the Super.engineering-shaped workspace. Thin SwiftUI shell over ndev session studio JSON contracts: open a git repo, spawn Claude/Codex/Grok/Kimi/Cursor agents (dry-run launch plans or tmux-detached live), list correlated sessions, review porcelain diffs, and…",
+  "tags": [
+   "desktop",
+   "swiftui",
+   "agent-studio",
+   "parallel-agents",
+   "worktree",
+   "git",
+   "super-engineering",
+   "dogfood"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.ndev-pressure"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.grok-viewer"
+   }
+  ]
+ },
+ {
+  "id": "product.nicos-career-profile",
+  "name": "Nico Career Profile & Resume",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Fact-locked career workspace. It owns verified facts, the v1.9.0 one-page platform default, four sendable role lanes, and reproducible PDF/DOCX/ATS/HTML/JSON exports. Its private localhost gallery compares platform, full-stack, adoption, and v1.9.1 enterprise resumes. Five deterministic wording passes and PDF…",
+  "tags": [
+   "careers",
+   "resume",
+   "profile",
+   "job-search",
+   "ats",
+   "gallery",
+   "simple-english",
+   "personal",
+   "external",
+   "external-product"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.nico-portfolio"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nico-portfolio-v2"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nstranquist.github.io"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.docs-puller"
+   }
+  ]
+ },
+ {
+  "id": "product.nicos-catalog",
+  "name": "Nicos Catalog",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Apache-2.0 Go module (github.com/nstranquist/nicos-catalog) that turns a directory of authored entity files into a validated, searchable, typed catalog. Hosts inject their own Layout and Providers; the engine owns normalization, deterministic indexing, BM25 retrieval, graph compilation, drift and reconcile gates,…",
+  "tags": [
+   "oss",
+   "go",
+   "library",
+   "apache-2.0",
+   "catalog-engine",
+   "public-release"
+  ],
+  "url": "https://nicos-catalog-explorer.nstranquist.workers.dev/"
+ },
+ {
+  "id": "product.nicos-crypto-platform",
+  "name": "Nicos Crypto Platform",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Standalone crypto platform for EVM, Solana, and Substrate planning, venue-neutral paper trading, guarded externally signed submission, and non-custodial agent commerce. nicos-tools keeps ndev ai crypto as a compatibility CLI. Desk retrieval is cdesk. A paper fill is not a live fill.",
+  "tags": [
+   "crypto",
+   "trading",
+   "paper",
+   "evm",
+   "solana",
+   "non-custodial",
+   "external",
+   "desk-trading"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.tape"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.bellwether"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.crypto-desk"
+   }
+  ]
+ },
+ {
+  "id": "product.nicos-dj",
+  "name": "Nicos DJ",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Native-first DJ workstation for web, desktop, iPhone/iPad, and Android over one shared Rust audio engine (engine/dj-core). Tauri/cpal hosts desktop; an import-free WASM ABI runs inside AudioWorklet; SwiftUI/AVAudioEngine calls a planar CoreAudio C ABI; and Compose/JNI/AAudio calls Rust directly into the…",
+  "tags": [
+   "consumer",
+   "dj",
+   "audio",
+   "cross-platform",
+   "desktop",
+   "web",
+   "ios",
+   "android",
+   "realtime",
+   "ai"
+  ]
+ },
+ {
+  "id": "product.nicos-docs-rn",
+  "name": "Nicos Docs RN",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Expo / React Native client for docs-puller serve (the FTS5 search API over a local docs corpus — 61 sources / 9k+ docs). Search, source filter, recent searches, and a full markdown reader. Same stack as nicos-scratchpad-rn (Zod client + react-query + SecureStore settings + AsyncStorage prefs).",
+  "tags": [
+   "mobile",
+   "docs",
+   "developer"
+  ]
+ },
+ {
+  "id": "product.nicos-editor",
+  "name": "Nicos Editor",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Nicos Editor is a pinned Lapce v0.4.6 overlay.",
+  "tags": [
+   "desktop",
+   "macos",
+   "editor",
+   "lapce",
+   "native",
+   "gpu",
+   "ndev",
+   "overlay",
+   "dogfood",
+   "local-alpha"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-ide"
+   }
+  ]
+ },
+ {
+  "id": "product.nicos-flag-eval",
+  "name": "nicos-flag-eval",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Cross-language feature-flag evaluator extracted from ndev flags. Go is the bucket reference. TypeScript and Swift must match schemas/parity-fixture.json.",
+  "tags": [
+   "developer",
+   "feature-flags",
+   "evaluator",
+   "oss",
+   "external-product"
+  ]
+ },
+ {
+  "id": "product.nicos-flags",
+  "name": "Nicos Flags",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "A tiny Cloudflare Pages edge service that hosts the universal ndev flags system: it evaluates flags at the edge with deterministic cross-language bucketing and serves a cheap, signed manifest for polling. The repo's own flag plane (it gates agent behavior like nicos.agent.next-prompt), catalogued here because it's…",
+  "tags": [
+   "developer",
+   "feature-flags",
+   "edge",
+   "cloudflare",
+   "svelte"
+  ]
+ },
+ {
+  "id": "product.nicos-guidelines-demo",
+  "name": "Guidelines Demo",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Deep dogfood of recipe.nicos-guidelines / skill nicos-guidelines: landing → dev login demo → onboarding → boards / token kiln / motion / SSE → billing Free↔Pro → settings. Built on garrid-ds-react + design-tokens + Motion 12 + Go/SQLite + edge-auth.",
+  "tags": [
+   "dogfood",
+   "golden-path",
+   "react",
+   "go",
+   "edge"
+  ],
+  "connections": [
+   {
+    "kind": "affiliated_with",
+    "target": "product.atelier-forge"
+   }
+  ]
+ },
+ {
+  "id": "product.nicos-hidden-menubar",
+  "name": "Nicos Hidden Bar",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Native macOS menu-bar organizer. Canonical source is the standalone GPL-3.0 repo (nstranquist/nicos-hidden-menubar).",
+  "tags": [
+   "desktop",
+   "macos",
+   "menubar",
+   "oss",
+   "external-product"
+  ]
+ },
+ {
+  "id": "product.nicos-host",
+  "name": "Nicos Host",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Nicos Host is the Phase 0 local deployment host. ndev host deploy runs git archive for a SHA, records an immutable deployment in a local ledger file (override NDEV_HOST_DIR), and prints a SHA URL using the same hostname grammar as ndev endpoints url. www is an alias exclusive to one sanitized project, so two local…",
+  "tags": [
+   "dogfood",
+   "local-first",
+   "semver:0.1.0"
+  ]
+ },
+ {
+  "id": "product.nicos-ide",
+  "name": "Nicos IDE",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Nicos IDE is the durable local Code-OSS workbench for NDev, installed as a native app with its own nicos-ide command.",
+  "tags": [
+   "desktop",
+   "macos",
+   "code-oss",
+   "ide",
+   "agent",
+   "ndev",
+   "dogfood",
+   "native-installed",
+   "local-alpha"
+  ]
+ },
+ {
+  "id": "product.nicos-pdf-studio",
+  "name": "Nicos PDF Studio",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Private GPUI desktop and JSON harness for generated PDFs. The interface has a source outline, collapsible sections, bounded document undo and redo, crash-safe unsaved recovery, a compact field view, and draft PDFs. Field highlights and PDF click-back connect inputs to rendered positions.",
+  "tags": [
+   "desktop",
+   "rust",
+   "gpui",
+   "pdf",
+   "local-first",
+   "dogfood"
+  ]
+ },
+ {
+  "id": "product.nicos-prompts",
+  "name": "Nicos Prompts",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Menu-bar front end for ndev ai prompts. ⌃⌥P opens a composer prefilled from the clipboard, with a live preview (derived title, content id, already-saved warning); ⌃⌥⇧P files the clipboard instantly. Each prompt is written verbatim to <obsidian-vault>/prompt-library/<date>-<slug>.md and mirrored into the…",
+  "tags": [
+   "prompts",
+   "prompt-library",
+   "menubar",
+   "obsidian",
+   "scratchpad"
+  ]
+ },
+ {
+  "id": "product.nicos-scratchpad",
+  "name": "Nicos Scratchpad",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Local-first notes/tasks platform: markdown files are the source of truth, fronted by seven surfaces (all kept, per the 2026-06-09 operator decision): native macOS menubar app (apps/desktop/nicos-scratchpad, v0.4.1 accessory + SMAppService + telemetry + native Agents/custom workspace surfaces), native iOS capture…",
+  "tags": [
+   "developer",
+   "menubar",
+   "scratchpad",
+   "mobile",
+   "vscode"
+  ]
+ },
+ {
+  "id": "product.nicos-slot-dock",
+  "name": "Nicos Slot Dock",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Mac-native edge dock strip that honors the system Dock (merge / mirror / off) and layers custom slots on top. The canonical source is the standalone MIT repo; the monorepo app remains a source mirror and provenance anchor. It is buildable, testable, discoverable through the external catalog, and controllable…",
+  "tags": [
+   "desktop",
+   "macos",
+   "dock",
+   "swiftui",
+   "appkit",
+   "dogfood",
+   "native-installed",
+   "portfolio-built",
+   "external-product",
+   "oss"
+  ]
+ },
+ {
+  "id": "product.nicos-song-studio",
+  "name": "Nicos Song Studio",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Repo-owned Suno-style music creation studio prototype.",
+  "tags": [
+   "consumer",
+   "music",
+   "ai"
+  ]
+ },
+ {
+  "id": "product.nicos-terminal",
+  "name": "Nicos Terminal",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Nicos Terminal is the local terminal experience for the Nicos agent fleet. Version 0.6.0-alpha.1 is a packaged native AppKit host backed by a pinned Ghostty framework. tmux owns durable processes, and ndev session terminal owns typed one-shot control, layouts, joined status, attention, exact focus and attachment,…",
+  "tags": [
+   "terminal",
+   "ghostty",
+   "iterm2",
+   "tmux",
+   "agent-layout",
+   "local-first",
+   "dogfood",
+   "semver:0.6.0-alpha.1"
+  ]
+ },
+ {
+  "id": "product.nicos-tools",
+  "name": "Nicos Tools Engineering Control Plane",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "The local-first control plane for Nico's software portfolio. Projects own their checks and telemetry emitters; nicos-tools owns scheduling, aggregation, evidence scoring, proposal generation, preservation, and cross-project review.",
+  "tags": [
+   "developer-platform",
+   "control-plane",
+   "daily-driver",
+   "dogfood"
+  ]
+ },
+ {
+  "id": "product.nicos-voice",
+  "name": "Nicos Voice",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Working end-to-end (engine de-risk → cgo proof → warm daemon → native app → real-speech dictation verified → WER eval → AI cleanup). Local-only dictation into the focused app (the terminal running Claude Code, an editor, anywhere); audio never leaves the Mac. Installed at /Applications/Nicos Voice.app.",
+  "tags": [
+   "voice",
+   "stt",
+   "on-device",
+   "menubar",
+   "privacy"
+  ]
+ },
+ {
+  "id": "product.nicos-window-switcher",
+  "name": "Nicos Window Switcher",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Mac-native window switcher (not an app switcher). Canonical source is the standalone MIT repo (nstranquist/nicos-window-switcher). Public APIs only. Default hotkey is ⌃⌥Tab.",
+  "tags": [
+   "desktop",
+   "macos",
+   "window-switcher",
+   "swiftui",
+   "appkit",
+   "dogfood",
+   "external-product",
+   "oss"
+  ]
+ },
+ {
+  "id": "product.nicos-zed",
+  "name": "Nicos Zed",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Nicos Zed is a stock Zed adapter for NDev. It is not a Zed fork and not a Nicos IDE replacement.",
+  "tags": [
+   "desktop",
+   "macos",
+   "zed",
+   "adapter",
+   "ndev",
+   "mcp",
+   "agent",
+   "dogfood",
+   "local-alpha"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-ide"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-agent-studio"
+   }
+  ]
+ },
+ {
+  "id": "product.nstranquist.github.io",
+  "name": "Nico GitHub Pages Work Site",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "The canonical public work site is <https://nstranquist.github.io/>. GitHub Pages serves it from the master branch of <https://github.com/nstranquist/nstranquist.github.io>. GitHub reports the site as built with HTTPS enforced. Nico's GitHub profile links to this URL.",
+  "tags": [
+   "careers",
+   "portfolio",
+   "github-pages",
+   "public",
+   "external-product"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-career-profile"
+   },
+   {
+    "kind": "replaces",
+    "target": "product.nico-portfolio"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.docs-puller"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-catalog"
+   }
+  ]
+ },
+ {
+  "id": "product.nvr",
+  "name": "nvr — Nicos Visual Regression",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "Self-hosted Chromatic-equivalent: visual-regression snapshotting and diffing for component or page screenshots. The deployed edge stack uses Cloudflare Worker Static Assets, Worker functions, R2, and Turso. The companion cron Worker ships alongside it in the extract.",
+  "tags": [
+   "developer",
+   "visual-regression",
+   "edge"
+  ]
+ },
+ {
+  "id": "product.pin-study",
+  "name": "Pin Study",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Next.js 16.3 App Router + shadcn presentation plane for jobkit coach study. Scoring stays in JobKit. Progress stays in JOBKIT_HOME.",
+  "tags": [
+   "nextjs",
+   "shadcn",
+   "jobkit",
+   "career"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.jobkit"
+   }
+  ]
+ },
+ {
+  "id": "product.pips",
+  "name": "PIPS",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "A fast, beautiful pass-and-play dice game built native for iOS (SwiftUI + SpriteKit + Core Haptics + StoreKit 2). Roll two dice; 7, 11, or doubles lets you deal pips (penalty points) to a rival; lowest pips wins when someone fills up. Family-friendly reframing of the traditional \"7-11-Doubles\" drinking game (all…",
+  "tags": [
+   "consumer",
+   "game",
+   "ios",
+   "native"
+  ]
+ },
+ {
+  "id": "product.prbench",
+  "name": "PR Bench",
+  "kind": "product",
+  "status": "deprecated",
+  "summary": "Fixture code-review eval with precision/recall.",
+  "tags": [
+   "agent-ops",
+   "evals",
+   "code-review",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.prepnote",
+  "name": "Prepnote",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Track progress and notes on online learning content. First useful run ships a digested NeetCode catalog (real titles + youtube.com/watch URLs). Add other YouTube channels, playlists, or videos from the workspace.",
+  "tags": [
+   "interview-prep",
+   "local-first",
+   "youtube",
+   "react",
+   "go",
+   "edge",
+   "external"
+  ]
+ },
+ {
+  "id": "product.roamorph",
+  "name": "Roamorph",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "A real-world browser platformer in which a squishy blob rolls, bounces, grows, and collects fragments across city streets and rooftops. Google Photorealistic 3D Tiles and a credential-free deterministic OpenStreetMap preview share typed game state, a renderer-independent physics core, and session-only performance…",
+  "tags": [
+   "game",
+   "browser",
+   "geospatial",
+   "cesium",
+   "openstreetmap",
+   "svelte"
+  ],
+  "url": "https://roamorph.pages.dev/"
+ },
+ {
+  "id": "product.saas-platform-nextjs",
+  "name": "SaaS Platform (Next.js 16)",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "A faithful Next.js 16 port of the multi-tenant SaaS dashboard, built as a third app alongside saas-platform-svelte (SvelteKit) and saas-platform-react (TanStack Start). All three share the same verbatim libsql service layer.",
+  "tags": [
+   "saas",
+   "nextjs",
+   "app-router",
+   "react-server-components",
+   "server-actions",
+   "ark-ui",
+   "tanstack-table",
+   "libsql",
+   "multi-tenant",
+   "ssr",
+   "template"
+  ]
+ },
+ {
+  "id": "product.saas-platform-react",
+  "name": "SaaS Platform (React + TanStack)",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "A faithful React + TanStack port of apps/saas-platform-svelte's multi-tenant SaaS dashboard, built as a second app (the SvelteKit original is untouched). Same product surface, different frontend lane.",
+  "tags": [
+   "saas",
+   "react",
+   "tanstack-start",
+   "tanstack-router",
+   "tanstack-table",
+   "ark-ui",
+   "libsql",
+   "multi-tenant",
+   "ssr",
+   "template"
+  ]
+ },
+ {
+  "id": "product.saas-platform-svelte",
+  "name": "SaaS Platform (SvelteKit)",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "The original multi-tenant SaaS dashboard shell on the SvelteKit lane — a clone of the Nicos SaaS platform, ported page by page with real auth and real persistence and zero external dependency for local dev. Its React + TanStack and Next.js 16 ports are already cataloged products; this entry closes the gap on the…",
+  "tags": [
+   "tanstack-table",
+   "saas",
+   "sveltekit",
+   "svelte5",
+   "bits-ui",
+   "libsql",
+   "multi-tenant",
+   "ssr",
+   "template"
+  ]
+ },
+ {
+  "id": "product.signal-heist",
+  "name": "Signal Heist",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "An asymmetric two-player browser co-op game: one player acts in the field while the other sees the missing intelligence. The same typed protocol runs against either a Durable Object SQLite room or a D1-backed room coordinated by a hibernating Durable Object.",
+  "tags": [
+   "consumer",
+   "game",
+   "multiplayer",
+   "realtime",
+   "durable-objects",
+   "d1",
+   "cloudflare",
+   "open-source",
+   "external",
+   "external-product"
+  ]
+ },
+ {
+  "id": "product.snapref",
+  "name": "SnapRef",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "SnapRef is the locally extracted generic product behind the shipped ndev browser harness. It is headless by default, isolates browser profiles, returns revision-bound executable element references, acts only after typed actionability checks, and keeps navigation, drive, filesystem, and arbitrary JavaScript…",
+  "tags": [
+   "developer",
+   "browser",
+   "automation",
+   "agent",
+   "oss",
+   "open-core"
+  ]
+ },
+ {
+  "id": "product.solo-ops",
+  "name": "Solo Ops",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Offline inquiry CRM + policy pack generator.",
+  "tags": [
+   "local-business",
+   "ops",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.stableclose",
+  "name": "StableClose",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "A non-custodial stablecoin receivables close desk: observe inbound Base USDC, match transfers to invoices conservatively, resolve exceptions with evidence, and export an accountant-ready CSV. The wedge is reconciliation across payment providers and direct wallets, not another invoice or custody rail.",
+  "tags": [
+   "b2b",
+   "stablecoin",
+   "accounts-receivable",
+   "reconciliation",
+   "non-custodial",
+   "base",
+   "usdc",
+   "edge"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.agent-commerce-cloud"
+   }
+  ]
+ },
+ {
+  "id": "product.tape",
+  "name": "Tape",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Live crypto tape for venue-local prints and DEX discovery. A Go resident scans Hyperliquid, Coinbase, and GeckoTerminal, stores prints, ranks moves with a liquidity floor, and serves a loopback board. A native macOS app (menu bar extra + desktop window) is a shell over that board. Perception only — no orders, no…",
+  "tags": [
+   "crypto",
+   "tape",
+   "prices",
+   "hyperliquid",
+   "geckoterminal",
+   "menubar",
+   "macos",
+   "go",
+   "sqlite",
+   "external",
+   "desk-research"
+  ],
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.bellwether"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-crypto-platform"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.crypto-desk"
+   }
+  ]
+ },
+ {
+  "id": "product.toolsmith-studio",
+  "name": "Toolsmith Studio",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Offline brief-to-shortform recipe factory.",
+  "tags": [
+   "content",
+   "distribution",
+   "go",
+   "cli",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.vespera",
+  "name": "Vespera",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Local loopback studio for explicit media of fictional adults. The policy kernel refuses minors and real-person likeness before any generator runs. SpaceXAI Imagine is the live provider; mock covers tests and keyless demos. This cell is a thin nicos-tools pointer. Keep off career/OSS showcase pins.",
+  "tags": [
+   "adult",
+   "studio",
+   "go",
+   "sqlite",
+   "spacexai",
+   "imagine",
+   "policy",
+   "loopback",
+   "external",
+   "proprietary"
+  ]
+ },
+ {
+  "id": "product.work",
+  "name": "Work",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Work is the enrolled tracker for nicos-tools. Agents manage it through ndev --json work the way they would manage Linear over GraphQL.",
+  "tags": [
+   "agent-ops",
+   "tracker",
+   "cli",
+   "board",
+   "garrid",
+   "offline-first"
+  ]
+ },
+ {
+  "id": "product.x402-paid-resource",
+  "name": "x402 Paid Resource (seller dogfood)",
+  "kind": "product",
+  "status": "experimental",
+  "summary": "Workers-compatible seller dogfood for the Cloudflare Wallets × x402 Agent Commerce KEP. Unpaid → HTTP 402; paid after local bind + facilitator isValid:true; proofs consumed once via Durable Object PROOF_REPLAY.",
+  "tags": [
+   "x402",
+   "seller",
+   "cloudflare-workers",
+   "dogfood",
+   "agent-commerce",
+   "holdco",
+   "off-desk"
+  ],
+  "connections": [
+   {
+    "kind": "supports",
+    "target": "product.agent-commerce-cloud"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-crypto-platform"
+   },
+   {
+    "kind": "bridges_to",
+    "target": "product.crypto-desk"
+   }
+  ]
+ }
+];
+
+      var STATUS = {
+        shipped:{label:"Shipped", cls:"shipped"},
+        experimental:{label:"Experimental", cls:"experimental"},
+        deprecated:{label:"Deprecated", cls:"deprecated"}
+      };
+      var STATUS_ORDER = {shipped:0, experimental:1, deprecated:2};
+      var BY_ID = {};
+      PRODUCTS.forEach(function(p){ BY_ID[p.id]=p; });
+
+      /* Tag facets are derived from the projected tags. The public
+         projection already drops the corpus-wide "manual" and "product"
+         markers; the facet list then keeps only tags used by 3 or more
+         products, so the filter stays scannable. Each record still shows
+         all of its own tags. */
+      var TAG_FACETS = (function(){
+        var counts={};
+        PRODUCTS.forEach(function(p){ (p.tags||[]).forEach(function(t){ counts[t]=(counts[t]||0)+1; }); });
+        return Object.keys(counts).filter(function(t){ return counts[t]>=3; })
+          .sort(function(a,b){ return counts[b]-counts[a] || a.localeCompare(b); })
+          .map(function(t){ return {tag:t, count:counts[t]}; });
+      })();
+
+      var state = { q:"", status:"all", tag:"all", sort:"name", view:"grid" };
+
+      var $ = function(id){ return document.getElementById(id); };
+      var gridEl=$("grid"), listEl=$("list"), emptyEl=$("empty");
+
+      function initials(name){
+        var words = name.replace(/[^a-zA-Z0-9 ]/g," ").split(/\s+/).filter(Boolean);
+        if(words.length>1) return (words[0][0]+words[1][0]).toUpperCase();
+        return name.slice(0,2).toUpperCase();
+      }
+      function connCount(p){ return (p.connections||[]).length; }
+      function matches(p){
+        if(state.status!=="all" && p.status!==state.status) return false;
+        if(state.tag!=="all" && (p.tags||[]).indexOf(state.tag)===-1) return false;
+        if(state.q){
+          var hay = (p.id+" "+p.name+" "+p.status+" "+(p.summary||"")+" "+(p.tags||[]).join(" ")).toLowerCase();
+          var terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+          for(var i=0;i<terms.length;i++){ if(hay.indexOf(terms[i])===-1) return false; }
+        }
+        return true;
+      }
+      function filtered(){
+        var out = PRODUCTS.filter(matches);
+        if(state.sort==="name-desc") out.sort(function(a,b){return b.name.localeCompare(a.name);});
+        else if(state.sort==="status") out.sort(function(a,b){return STATUS_ORDER[a.status]-STATUS_ORDER[b.status] || a.name.localeCompare(b.name);});
+        else if(state.sort==="connections") out.sort(function(a,b){return connCount(b)-connCount(a) || a.name.localeCompare(b.name);});
+        else if(state.sort==="tags") out.sort(function(a,b){return (b.tags||[]).length-(a.tags||[]).length || a.name.localeCompare(b.name);});
+        else out.sort(function(a,b){return a.name.localeCompare(b.name);});
+        return out;
+      }
+      function facetBtn(label, count, pressed, dotCls){
+        var b=document.createElement("button");
+        b.className="facet"; b.setAttribute("aria-pressed", pressed?"true":"false");
+        b.innerHTML = (dotCls? '<span class="dot '+dotCls+'"></span>' : "") +
+          "<span></span>" + '<span class="count">'+count+"</span>";
+        b.querySelector("span:nth-child("+(dotCls?2:1)+")").textContent = label;
+        return b;
+      }
+      function renderFacets(){
+        var sn=$("statusNav"); sn.innerHTML="";
+        var all = facetBtn("All products", PRODUCTS.length, state.status==="all", null);
+        all.addEventListener("click",function(){state.status="all";render();});
+        sn.appendChild(all);
+        Object.keys(STATUS).forEach(function(k){
+          var c = PRODUCTS.filter(function(p){return p.status===k;}).length;
+          var b = facetBtn(STATUS[k].label, c, state.status===k, STATUS[k].cls);
+          b.addEventListener("click",function(){ state.status = (state.status===k)?"all":k; render(); });
+          sn.appendChild(b);
+        });
+        var tn=$("tagNav"); tn.innerHTML="";
+        var tall = facetBtn("All tags", PRODUCTS.length, state.tag==="all", null);
+        tall.addEventListener("click",function(){state.tag="all";render();});
+        tn.appendChild(tall);
+        TAG_FACETS.forEach(function(f){
+          var b = facetBtn(f.tag, f.count, state.tag===f.tag, null);
+          b.addEventListener("click",function(){ state.tag = (state.tag===f.tag)?"all":f.tag; render(); });
+          tn.appendChild(b);
+        });
+      }
+      function renderApplied(){
+        var box=$("applied"); box.innerHTML="";
+        var items=[];
+        if(state.q) items.push({label:'Search: \u201c'+state.q+'\u201d', clear:function(){state.q=""; $("q").value="";}});
+        if(state.status!=="all") items.push({label:"Status: "+STATUS[state.status].label, clear:function(){state.status="all";}});
+        if(state.tag!=="all") items.push({label:"Tag: "+state.tag, clear:function(){state.tag="all";}});
+        if(!items.length){ box.className="applied"; return; }
+        box.className="applied on";
+        var lbl=document.createElement("span"); lbl.className="lbl"; lbl.textContent="Filtered by"; box.appendChild(lbl);
+        items.forEach(function(it){
+          var pill=document.createElement("span"); pill.className="pill";
+          var tx=document.createElement("span"); tx.textContent=it.label;
+          var x=document.createElement("button"); x.textContent="\u2715"; x.setAttribute("aria-label","Remove filter "+it.label);
+          x.addEventListener("click",function(){ it.clear(); render(); });
+          pill.appendChild(tx); pill.appendChild(x); box.appendChild(pill);
+        });
+        var clear=document.createElement("button"); clear.className="clear-all"; clear.textContent="Clear all";
+        clear.addEventListener("click",function(){ resetFilters(); render(); });
+        box.appendChild(clear);
+      }
+      function resetFilters(){
+        state.q=""; $("q").value=""; state.status="all"; state.tag="all";
+      }
+      function statusHTML(p){
+        return '<span class="dot '+STATUS[p.status].cls+'"></span>'+STATUS[p.status].label;
+      }
+      function renderResults(){
+        var out=filtered();
+        $("resCount").textContent = "Showing "+out.length+" of "+PRODUCTS.length+" products";
+        $("resNote").textContent = "real records from the catalog — public-safe fields only";
+        gridEl.innerHTML=""; listEl.innerHTML="";
+        gridEl.scrollTop=0; listEl.scrollTop=0;
+        emptyEl.className = out.length? "empty" : "empty on";
+        gridEl.className = "grid" + (state.view==="list" ? " off" : "");
+        listEl.className = "list" + (state.view==="list" ? " on" : "");
+
+        out.forEach(function(p){
+          var card=document.createElement("button");
+          card.className="card";
+          card.setAttribute("aria-label","Open record for "+p.name);
+          var tagsPreview = (p.tags||[]).slice(0,4).map(function(t){return '<span class="tag"></span>';}).join("");
+          var moreTags = (p.tags||[]).length>4 ? '<span class="tag">+'+((p.tags||[]).length-4)+'</span>' : "";
+          card.innerHTML =
+            '<span class="card-top"><span class="tile">'+initials(p.name)+'</span>' +
+            '<span><h3></h3><span class="ver"></span></span></span>' +
+            '<p></p>' +
+            '<span class="card-tags">'+tagsPreview+moreTags+'</span>' +
+            '<span class="card-meta"><span class="st">'+statusHTML(p)+'</span>' +
+            (connCount(p) ? '<span class="sep"></span><span>'+connCount(p)+(connCount(p)===1?" connection":" connections")+'</span>' : "") +
+            (p.url ? '<span class="sep"></span><span>Public URL</span>' : "") +
+            '<span class="open">Open record \u2192</span></span>';
+          card.querySelector("h3").textContent=p.name;
+          card.querySelector(".ver").textContent=p.id;
+          var para=card.querySelector("p");
+          para.textContent=p.summary;
+          var tagEls=card.querySelectorAll(".card-tags .tag");
+          (p.tags||[]).slice(0,4).forEach(function(t,i){ tagEls[i].textContent=t; });
+          card.addEventListener("click",function(){ openDrawer(p); });
+          gridEl.appendChild(card);
+        });
+
+        if(state.view==="list" && out.length){
+          var head=document.createElement("div");
+          head.className="lrow head";
+          head.innerHTML='<span></span><span>Product</span><span>Status</span><span class="col-stack">Tags</span><span class="col-health">Links</span>';
+          listEl.appendChild(head);
+          out.forEach(function(p){
+            var row=document.createElement("button");
+            row.className="lrow";
+            row.setAttribute("aria-label","Open record for "+p.name);
+            row.innerHTML =
+              '<span class="tile">'+initials(p.name)+'</span>' +
+              '<span class="nm"></span>' +
+              '<span class="st">'+statusHTML(p)+'</span>' +
+              '<span class="col-stack"></span>' +
+              '<span class="col-health"></span>';
+            row.querySelector(".nm").textContent=p.name;
+            row.querySelector(".col-stack").textContent=(p.tags||[]).slice(0,5).join(", ")+((p.tags||[]).length>5 ? " …" : "");
+            row.querySelector(".col-links").textContent=connCount(p) ? connCount(p)+" conn." : "—";
+            row.addEventListener("click",function(){ openDrawer(p); });
+            listEl.appendChild(row);
+          });
+        }
+      }
+      function render(){ renderFacets(); renderApplied(); renderResults(); }
+
+      /* drawer */
+      var drawer=$("drawer"), scrim=$("scrim"), lastFocus=null;
+      function targetName(id){ return BY_ID[id] ? BY_ID[id].name : id; }
+      function openDrawer(p){
+        /* Opening a record is engaging the frame: lock the scroll
+           gate on in the same action, so a click that lands on a
+           product card both opens the drawer AND activates the
+           window (previously the drawer could open while the gate
+           stayed inactive). setGate is a hoisted function
+           declaration from the gate section below. */
+        setGate(true);
+        lastFocus=document.activeElement;
+        var body=$("drawerBody");
+        var tagsHtml=(p.tags||[]).map(function(s){return '<span class="tag"></span>';}).join("");
+        var connHtml="";
+        if(p.connections && p.connections.length){
+          connHtml='<div class="d-row"><dt>Connections</dt><dd>'+p.connections.map(function(c){
+            return '<button class="conn-link" data-target="'+c.target+'"><span class="ck"></span> <b></b><br><span class="mono" style="font-size:11px;color:var(--text-3)">'+c.target+'</span></button>';
+          }).join("")+'</dd></div>';
+        }
+        body.innerHTML =
+          '<div class="d-head"><span class="tile">'+initials(p.name)+'</span>' +
+          '<span><h3 id="dName"></h3><span class="ver"></span></span></div>' +
+          '<span class="d-status">'+statusHTML(p)+'</span>' +
+          '<p class="d-desc"></p>' +
+          '<dl class="d-table">' +
+          '<div class="d-row"><dt>ID</dt><dd class="mono" style="font-size:12.5px"></dd></div>' +
+          '<div class="d-row"><dt>Kind</dt><dd>product</dd></div>' +
+          '<div class="d-row"><dt>Status</dt><dd>'+STATUS[p.status].label+' — engineering maturity</dd></div>' +
+          '<div class="d-row"><dt>Tags</dt><dd><span class="tags">'+tagsHtml+'</span></dd></div>' +
+          (p.url ? '<div class="d-row"><dt>URL</dt><dd><a class="d-url" target="_blank" rel="noopener" style="color:var(--accent-text);font-weight:500"></a></dd></div>' : "") +
+          connHtml +
+          '</dl>' +
+          '<p style="font-size:12px;color:var(--text-3);margin-top:18px">Real catalog record, shown in its public-safe projection — ID, name, kind, status, summary, tags, public URL, and connections only.</p>';
+        body.querySelector("#dName").textContent=p.name;
+        body.querySelector(".ver").textContent=p.id;
+        var desc=body.querySelector(".d-desc");
+        desc.textContent=p.summary;
+        body.querySelector(".d-row dd.mono").textContent=p.id;
+        var tagEls=body.querySelectorAll(".tag");
+        (p.tags||[]).forEach(function(s,i){ tagEls[i].textContent=s; });
+        if(p.url){ var a=body.querySelector(".d-url"); a.href=p.url; a.textContent=p.url; }
+        if(p.connections){
+          var links=body.querySelectorAll(".conn-link");
+          p.connections.forEach(function(c,i){
+            links[i].querySelector(".ck").textContent=c.kind;
+            links[i].querySelector("b").textContent=targetName(c.target);
+            links[i].addEventListener("click",function(){ if(BY_ID[c.target]) openDrawer(BY_ID[c.target]); });
+          });
+        }
+        drawer.hidden=false;
+        requestAnimationFrame(function(){ drawer.classList.add("on"); scrim.classList.add("on"); });
+        $("drawerClose").focus();
+      }
+      function closeDrawer(){
+        drawer.classList.remove("on"); scrim.classList.remove("on");
+        setTimeout(function(){ drawer.hidden=true; },260);
+        if(lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      $("drawerClose").addEventListener("click",closeDrawer);
+      scrim.addEventListener("click",closeDrawer);
+      document.addEventListener("keydown",function(e){
+        if(e.key==="Escape" && !drawer.hidden) closeDrawer();
+        if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==="k"){ e.preventDefault(); setGate(true); $("q").focus(); }
+      });
+
+      /* controls */
+      var debounce=null;
+      $("q").addEventListener("input",function(e){
+        clearTimeout(debounce);
+        var v=e.target.value;
+        debounce=setTimeout(function(){ state.q=v.trim(); render(); },120);
+      });
+      $("sort").addEventListener("change",function(e){ state.sort=e.target.value; renderResults(); });
+      $("viewGrid").addEventListener("click",function(){ state.view="grid"; $("viewGrid").setAttribute("aria-pressed","true"); $("viewList").setAttribute("aria-pressed","false"); renderResults(); });
+      $("viewList").addEventListener("click",function(){ state.view="list"; $("viewList").setAttribute("aria-pressed","true"); $("viewGrid").setAttribute("aria-pressed","false"); renderResults(); });
+      $("emptyClear").addEventListener("click",function(){ resetFilters(); render(); });
+
+      /* Keep keyboard focus visible inside the sidebar pane: scroll the
+         sidebar itself (not the page) just enough to reveal the facet. */
+      var sideEl=document.querySelector(".side");
+      sideEl.addEventListener("focusin",function(e){
+        if(!e.target.classList || !e.target.classList.contains("facet")) return;
+        if(sideEl.scrollHeight<=sideEl.clientHeight) return;
+        var elTop=e.target.offsetTop, elBottom=elTop+e.target.offsetHeight;
+        var viewTop=sideEl.scrollTop, viewBottom=viewTop+sideEl.clientHeight;
+        if(elTop<viewTop) sideEl.scrollTop=Math.max(0,elTop-8);
+        else if(elBottom>viewBottom) sideEl.scrollTop=elBottom-sideEl.clientHeight+8;
+      });
+
+      /* ---------- scroll gate + facade ----------
+         Covered (inactive): the live frame shows through a tinted
+         cover (see the .cover CSS) and is inert underneath it, and
+         the sidebar/results panes are not scroll containers, so
+         wheel, trackpad and touch gestures over the window chain
+         to the page and scroll straight past the catalog. Engaging
+         the window — clicking the cover (or pressing Enter / Space
+         on it), ⌘K, or the browse affordances — activates internal
+         pane scrolling and lifts the cover. Esc (with focus inside,
+         and no drawer open) or a click outside the window re-covers
+         it. The live frame is never unmounted, so filters, search
+         and pane scroll positions survive covering and re-entry.
+         No wheel events are intercepted: the gate works purely by
+         toggling the panes' overflow, so trackpads, touch and
+         keyboard scrolling behave natively in whichever state is
+         current. On the <=900px layout there is no cover and the
+         gate is inert. */
+      var windowEl=$("catalogWindow"), gateHint=$("gateHint"), gateLabel=$("gateLabel"), gateCover=$("gateCover");
+      var appEl=windowEl.querySelector(".app");
+      var gateActive=false;
+      /* While covered on the desktop layout, the live frame under
+         the tint is inert + aria-hidden: it renders the cover's
+         picture, but it is not clickable, focusable or announced.
+         On the <=900px flow layout there is no cover, so the frame
+         stays live there; re-sync on viewport changes too. */
+      function syncCoverInert(active){
+        var covered=!active && window.matchMedia("(min-width: 901px)").matches;
+        if(covered && appEl.contains(document.activeElement) && document.activeElement.blur) document.activeElement.blur();
+        if(covered){ appEl.setAttribute("inert",""); appEl.setAttribute("aria-hidden","true"); }
+        else{ appEl.removeAttribute("inert"); appEl.removeAttribute("aria-hidden"); }
+      }
+      window.addEventListener("resize",function(){ syncCoverInert(gateActive); });
+      function setGate(active){
+        syncCoverInert(active);
+        if(active===gateActive && windowEl.classList.contains("gate-active")===active) return;
+        gateActive=active;
+        windowEl.classList.toggle("gate-active", active);
+        windowEl.setAttribute("data-scroll-gate", active ? "active" : "inactive");
+        gateHint.setAttribute("aria-pressed", active ? "true" : "false");
+        gateLabel.textContent = active ? "Browsing · Esc to release" : "Click to browse — scrolling passes through";
+      }
+      function isGateHint(node){ return node && node.closest && node.closest("#gateHint"); }
+      /* Click / tap anywhere inside the window activates it —
+         including a click on the cover itself. The hint chip is
+         excluded here — its own click toggles the gate. */
+      windowEl.addEventListener("pointerdown",function(e){
+        if(isGateHint(e.target)) return;
+        setGate(true);
+      });
+      /* Tabbing (or ⌘K) into any control or card inside activates it.
+         Focusing the cover or the hint chip alone does not — both
+         are activation controls in their own right, and pressing
+         them is what activates / releases. */
+      windowEl.addEventListener("focusin",function(e){
+        if(e.target===gateHint || e.target===gateCover) return;
+        setGate(true);
+      });
+      /* The facade cover: a click, Enter or Space on it lifts the
+         cover, activates the gate, and lands focus in the search
+         box so keyboard users start inside the frame. (A mouse
+         click also passes the window pointerdown handler above,
+         which activates first; this handler then moves focus.) */
+      gateCover.addEventListener("click",function(){
+        setGate(true);
+        $("q").focus();
+      });
+      /* The hint chip is the active-state release affordance:
+         pressing it re-covers the window and hands focus to the
+         cover, the re-entry control. */
+      gateHint.addEventListener("click",function(){
+        if(gateActive){ setGate(false); gateCover.focus(); }
+        else setGate(true);
+      });
+      /* "Browse the index" links jump here and start browsing. */
+      var browseLinks=document.querySelectorAll('a[href="#index"]');
+      for(var bi=0;bi<browseLinks.length;bi++){
+        browseLinks[bi].addEventListener("click",function(){ setGate(true); });
+      }
+      /* Clicking outside the window re-covers it and hands the wheel
+         back to the page. Clicks on the open drawer — or on its
+         scrim, the drawer's own close affordance — are not "outside":
+         closing the drawer must never release the gate or re-cover
+         the window mid-session. */
+      document.addEventListener("pointerdown",function(e){
+        if(!gateActive) return;
+        if(windowEl.contains(e.target)) return;
+        if(drawer.contains(e.target)) return;
+        if(e.target===scrim) return;
+        setGate(false);
+        if(windowEl.contains(document.activeElement) && document.activeElement.blur) document.activeElement.blur();
+      });
+      /* Esc re-covers the window when focus is inside it. If the
+         drawer is open, the drawer handler above consumes Esc to
+         close the drawer only, and the gate stays active. Focus
+         moves to the cover so keyboard users land on the re-entry
+         control and the next Tab continues down the page, past the
+         window. */
+      document.addEventListener("keydown",function(e){
+        if(e.key!=="Escape" || !gateActive) return;
+        if(!drawer.hidden) return;
+        if(!windowEl.contains(document.activeElement)) return;
+        setGate(false);
+        gateCover.focus();
+      });
+      setGate(false);
+
+      render();
+    </script>
+  </body>
+</html>
