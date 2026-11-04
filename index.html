@@ -492,13 +492,13 @@
       <div class="wrap">
         <div class="intro">
           <h1>A list of the software I make.</h1>
-          <p>I develop and look after a fair amount of software, and I needed one place to keep track of it, so I built a catalog. This page shows the products in it — 85 of them — with a short note on what each one is and how far along it is.</p>
+          <p>I develop and look after a fair amount of software, and I needed one place to keep track of it, so I built a catalog. This page shows the products in it — 86 of them — with a short note on what each one is and how far along it is.</p>
           <div class="intro-stats" aria-label="About the catalog">
-            <div class="istat"><b>85</b><span>products, the full set</span></div>
-            <div class="istat"><b>30</b><span>shipped</span></div>
+            <div class="istat"><b>86</b><span>products, the full set</span></div>
+            <div class="istat"><b>31</b><span>shipped</span></div>
             <div class="istat"><b>47</b><span>experimental</span></div>
             <div class="istat"><b>8</b><span>deprecated</span></div>
-            <div class="istat"><b>45</b><span>typed connections</span></div>
+            <div class="istat"><b>47</b><span>typed connections</span></div>
             <div class="istat"><b>~2,250</b><span>entities in the private index</span></div>
           </div>
         </div></div>
@@ -513,7 +513,7 @@
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
               catalog — products
             </span>
-            <span class="wb-note mono">85 real products</span>
+            <span class="wb-note mono">86 real products</span>
           </div>
 
           <div class="app">
@@ -577,7 +577,7 @@
                   <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/><path d="M8.5 11h5"/></svg>
                 </div>
                 <h3>No products match</h3>
-                <p>Nothing in the 85 products fits that combination. Try a shorter search, or clear the filters to see everything again.</p>
+                <p>Nothing in the 86 products fits that combination. Try a shorter search, or clear the filters to see everything again.</p>
                 <button class="btn primary" id="emptyClear">Clear all filters</button>
               </div>
             </div>
@@ -627,10 +627,10 @@
             <div class="field"><b>Name</b><span>The product’s public name, as authored in the catalog.</span></div>
             <div class="field"><b>Kind</b><span>“product” for everything on this page — the private index holds many other kinds.</span></div>
             <div class="field"><b>Status</b><span>Shipped, experimental, or deprecated — engineering maturity.</span></div>
-            <div class="field"><b>Summary</b><span>A short public description, drawn from the catalog record. All 85 products on this page have one.</span></div>
-            <div class="field"><b>Tags</b><span>The product’s catalog tags, with two corpus-wide markers removed in the public projection: “manual” (it was on all 85) and “product” (it just repeats the kind). The sidebar filter lists only tags used by 3 or more products; each record still shows all of its own tags.</span></div>
-            <div class="field"><b>URL</b><span>A public URL, only where one is allowlisted. Just 2 of the 85 products carry one.</span></div>
-            <div class="field"><b>Connections</b><span>Typed links — bridges_to, affiliated_with, replaces, supports — kept only where both products are in this public set. There are 45 across the 85 products.</span></div>
+            <div class="field"><b>Summary</b><span>A short public description, drawn from the catalog record. All 86 products on this page have one.</span></div>
+            <div class="field"><b>Tags</b><span>The product’s catalog tags, with two corpus-wide markers removed in the public projection: “manual” (it was on all 86) and “product” (it just repeats the kind). The sidebar filter lists only tags used by 3 or more products; each record still shows all of its own tags.</span></div>
+            <div class="field"><b>URL</b><span>A public URL, only where one is allowlisted. Just 3 of the 86 products carry one.</span></div>
+            <div class="field"><b>Connections</b><span>Typed links — bridges_to, affiliated_with, adopted_by, replaces, supports — kept only where both products are in this public set. There are 47 across the 86 products.</span></div>
           </div>
         </section>
 
@@ -641,7 +641,7 @@
             <div class="step">
               <span class="num">01</span>
               <h3>This showcase — the front door</h3>
-              <p>You’re looking at it: what the catalog is, all 85 products in their public-safe form, and how the privacy boundary works. The product slice shown here is the <strong>Catalog Gallery’s</strong> data — the privacy-safe public portfolio — rendered standalone on this page.</p>
+              <p>You’re looking at it: what the catalog is, all 86 products in their public-safe form, and how the privacy boundary works. The product slice shown here is the <strong>Catalog Gallery’s</strong> data — the privacy-safe public portfolio — rendered standalone on this page.</p>
             </div>
             <div class="step">
               <span class="num">02</span>
@@ -677,7 +677,7 @@
         <div class="wrap foot-in">
           <span><b style="color:var(--text-2)">Catalog</b> — the personal index of software by Nico S. Products shown here; ~2,250 entities in the full private index.</span>
           <span class="sp"></span>
-          <span class="mono" style="font-size:11.5px">Showcase v1.2 · 85 real products · public-safe projection.</span>
+          <span class="mono" style="font-size:11.5px">Showcase v1.3 · 86 real products · public-safe projection.</span>
         </div>
       </footer>
     </main>
@@ -881,6 +881,27 @@
    "catalog",
    "portfolio",
    "dogfood"
+  ]
+ },
+ {
+  "id": "product.catalog-gallery",
+  "name": "Catalog Gallery",
+  "kind": "product",
+  "status": "shipped",
+  "summary": "The public face of the software catalog: one page listing the catalog's products in public-safe form — name, status, a short note, tags, and the typed connections between them — so anyone can browse what Nico builds without seeing the private index.",
+  "tags": [
+   "portfolio",
+   "public",
+   "static-site",
+   "github-pages",
+   "catalog"
+  ],
+  "url": "https://nstranquist.github.io/catalog-showcase/",
+  "connections": [
+   {
+    "kind": "bridges_to",
+    "target": "product.nicos-catalog"
+   }
   ]
  },
  {
@@ -1544,7 +1565,13 @@
    "catalog-engine",
    "public-release"
   ],
-  "url": "https://nicos-catalog-explorer.nstranquist.workers.dev/"
+  "url": "https://nicos-catalog-explorer.nstranquist.workers.dev/",
+  "connections": [
+   {
+    "kind": "adopted_by",
+    "target": "product.catalog-gallery"
+   }
+  ]
  },
  {
   "id": "product.nicos-crypto-platform",

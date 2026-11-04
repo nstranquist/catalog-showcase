@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "count": 85,
+ "count": 86,
  "items": [
   {
    "id": "product.agent-commerce-cloud",
@@ -192,6 +192,27 @@
     "catalog",
     "portfolio",
     "dogfood"
+   ]
+  },
+  {
+   "id": "product.catalog-gallery",
+   "name": "Catalog Gallery",
+   "kind": "product",
+   "status": "shipped",
+   "summary": "The public face of the software catalog: one page listing the catalog's products in public-safe form \u2014 name, status, a short note, tags, and the typed connections between them \u2014 so anyone can browse what Nico builds without seeing the private index.",
+   "tags": [
+    "portfolio",
+    "public",
+    "static-site",
+    "github-pages",
+    "catalog"
+   ],
+   "url": "https://nstranquist.github.io/catalog-showcase/",
+   "connections": [
+    {
+     "kind": "bridges_to",
+     "target": "product.nicos-catalog"
+    }
    ]
   },
   {
@@ -855,7 +876,13 @@
     "catalog-engine",
     "public-release"
    ],
-   "url": "https://nicos-catalog-explorer.nstranquist.workers.dev/"
+   "url": "https://nicos-catalog-explorer.nstranquist.workers.dev/",
+   "connections": [
+    {
+     "kind": "adopted_by",
+     "target": "product.catalog-gallery"
+    }
+   ]
   },
   {
    "id": "product.nicos-crypto-platform",

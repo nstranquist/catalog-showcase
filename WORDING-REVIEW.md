@@ -139,3 +139,14 @@ Sections:
 - No cadence/freshness claims ("updated daily", "live data") unless the
   pipeline gets scheduled; the page is a snapshot and says so implicitly —
   keep it that way.
+
+## Refresh addendum — v1.3 (2026-11-03)
+
+The catalog gained `product.catalog-gallery`, so the page was refreshed
+through the same pipeline and re-verified the same way: embedded data
+deep-equals the pipeline output; every number in the prose was updated
+and re-checked — 86 products (31 shipped / 47 experimental / 8
+deprecated), 47 typed connections (bridges_to 42, affiliated_with 2,
+adopted_by 1, replaces 1, supports 1), 3 products with a public URL,
+all 86 with a summary, 300 distinct tags, 43 facet tags. No other copy
+changed; the adopted_by kind was added to the Connections field's list.

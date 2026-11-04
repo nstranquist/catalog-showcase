@@ -26,6 +26,10 @@ public-safe `PublicEntity` DTO only.
   WCAG AA contrast, heading order, drawer focus trap, 40px touch targets,
   plus a fixed List-view bug) was applied with no copy or data changes
   beyond the footer version string.
+- **v1.3 notes:** data refresh only — the catalog gained
+  `product.catalog-gallery` (the showcase cataloging itself), so the page
+  now shows 86 products (31 shipped), 47 connections, and 3 public URLs,
+  re-verified end to end; no design or wording changes.
 
 ## What's here
 
