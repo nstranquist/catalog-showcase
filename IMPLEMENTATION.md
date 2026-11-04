@@ -134,8 +134,11 @@ the showcase summary for that product in any case.
       heading-order cleanup, drawer focus trap, 40px touch targets, and a
       real List-view bug fixed (wrong column class threw and left the list
       empty). Copy/data/interactions otherwise unchanged.
-- [x] Published (2026-11-03, Nico's go): artifact shared publicly
-      (muse.ai link, serves v1.2) and the lock-in repo pushed to
+- [x] Published (2026-11-03, Nico's go): the lock-in repo pushed to
       https://github.com/nstranquist/catalog-showcase with tags v1.0.0,
       v1.1.0, v1.2.0 (normal git push via gh login, per Nico's workflow
-      rule — no per-file API edits).
+      rule — no per-file API edits), and the page served from GitHub
+      Pages at https://nstranquist.github.io/catalog-showcase/ (build
+      verified, auto-rebuilds from main). The earlier Muse artifact
+      share link was retired the same day — Nico's rule: publish on real
+      pages hosting, never Muse artifacts.

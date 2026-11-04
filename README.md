@@ -16,9 +16,11 @@ public-safe `PublicEntity` DTO only.
   exact version.
 - **Published (2026-11-03):** this repo lives at
   https://github.com/nstranquist/catalog-showcase (public, tags v1.0.0 /
-  v1.1.0 / v1.2.0), and the page itself is shared at
-  https://muse.ai/s/software-catalog-tool-v4-xft6wpxooplrxb/kdwSMrijUMSZrWN_McDhl1ERhDdZT5U-FuUZA1wddfM
-  (serves v1.2; re-share after future edits to update it).
+  v1.1.0 / v1.2.0), and the page itself is live on GitHub Pages at
+  **https://nstranquist.github.io/catalog-showcase/** — it rebuilds
+  automatically from `main` on every push. (An earlier Muse share link
+  was retired the same day at Nico's direction: publish on real pages
+  hosting, not Muse artifacts.)
 - **v1.2 notes:** hero wording settled in a plain, human voice (H1 "A list
   of the software I make.", eyebrow removed), and a QA pass (SEO meta/OG,
   WCAG AA contrast, heading order, drawer focus trap, 40px touch targets,
