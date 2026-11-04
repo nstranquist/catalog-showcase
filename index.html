@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="data:," />
-    <title>Software Catalog — Every project, one index</title>
+    <title>Software Catalog — Everything I've built. One index.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -471,7 +471,7 @@
           <a href="#design">Design notes</a>
         </nav>
         <div class="nav-right">
-          <span class="nav-meta">85 real products, one index</span>
+          <span class="nav-meta">The public slice of a private index</span>
           <a class="btn" href="#index">Browse the index</a>
         </div>
       </div>
@@ -480,16 +480,15 @@
     <main id="top">
       <div class="wrap">
         <div class="intro">
-          <div class="lock-pill"><span class="lock-dot" aria-hidden="true"></span>Direction locked — V4 <span class="mono">· Nov 2026</span></div>
-          <h1>Every project I build,<br />in one place.</h1>
-          <p>Catalog is the tool I use to keep track of the software I develop, maintain, and deploy. Below is the <strong>real product slice</strong> of that catalog — all <strong>85 products</strong>, shown through a public-safe projection. Status here is engineering maturity, not whether something happens to be running right now.</p>
+          <h1>Everything I've built.<br />One index.</h1>
+          <p>I build a lot of software. This is the index I built to hold it all — every product I develop, maintain, and deploy, connected to everything it touches. Below is the public slice: all 85 products, with the private detail projected out.</p>
           <div class="intro-stats" aria-label="About the catalog">
-            <div class="istat"><b>85</b><span>products, shown in full</span></div>
+            <div class="istat"><b>85</b><span>products, the full set</span></div>
             <div class="istat"><b>30</b><span>shipped</span></div>
             <div class="istat"><b>47</b><span>experimental</span></div>
             <div class="istat"><b>8</b><span>deprecated</span></div>
+            <div class="istat"><b>45</b><span>typed connections</span></div>
             <div class="istat"><b>~2,250</b><span>entities in the private index</span></div>
-            <div class="istat"><b>~40</b><span>surfaces in the private index</span></div>
           </div>
         </div></div>
       </div>
@@ -518,7 +517,7 @@
                 <nav id="tagNav" class="tags-nav"></nav>
               </div>
               <div class="side-foot">
-                <b>Real products, public-safe fields only.</b> Each record below carries just ID, name, kind, status, summary, tags, a public URL where one exists, and connections to other products on this page.
+                <b>Real products, public-safe fields only.</b> Each record carries just ID, name, kind, status, summary, tags, a public URL where one exists, and connections to other products on this page.
               </div>
             </aside>
 
@@ -532,7 +531,7 @@
                     <kbd>⌘K</kbd>
                   </label>
                   <div class="select-wrap">
-                    <select id="sort" aria-label="Sort projects">
+                    <select id="sort" aria-label="Sort products">
                       <option value="name">Name A–Z</option>
                       <option value="name-desc">Name Z–A</option>
                       <option value="status">Status — shipped first</option>
@@ -620,7 +619,7 @@
             <div class="field"><b>Summary</b><span>A short public description, drawn from the catalog record. All 85 products on this page have one.</span></div>
             <div class="field"><b>Tags</b><span>The product’s catalog tags, with two corpus-wide markers removed in the public projection: “manual” (it was on all 85) and “product” (it just repeats the kind). The sidebar filter lists only tags used by 3 or more products; each record still shows all of its own tags.</span></div>
             <div class="field"><b>URL</b><span>A public URL, only where one is allowlisted. Just 2 of the 85 products carry one.</span></div>
-            <div class="field"><b>Connections</b><span>Typed links — bridges_to, affiliated_with, replaces, supports — kept only where both products are in this public set.</span></div>
+            <div class="field"><b>Connections</b><span>Typed links — bridges_to, affiliated_with, replaces, supports — kept only where both products are in this public set. There are 45 across the 85 products.</span></div>
           </div>
         </section>
 
@@ -653,7 +652,7 @@
         <section class="block" id="design">
           <div class="refs">
             <h3>Design notes</h3>
-            <p>This page follows the product-design philosophy behind Linear, Vercel, and Raycast: clarity over decoration, typography and spacing doing the work, a near-monochrome palette with color reserved for status. The catalog itself is modeled on Raycast’s extension store — a grid dense enough to feel like hundreds of projects, quiet enough to scan. Search and faceted filtering follow NN/g’s research on listing pages: prominent search, plainly labeled filters with counts, and applied filters you can see and remove.</p>
+            <p>Built to be scanned, not admired: a dense grid, filters with counts, search that is always one keystroke away, and color that only ever means status. The design follows published research and interface teardowns rather than decoration — sources below.</p>
             <ul>
               <li><a href="https://studiomaydit.com/blog/linear-vercel-raycast-aesthetic" target="_blank" rel="noopener">The Linear / Vercel / Raycast aesthetic</a> <span class="src">— Studio Maydit, on restraint as a design system</span></li>
               <li><a href="https://www.nngroup.com/reports/ecommerce-ux-search-including-faceted-search" target="_blank" rel="noopener">Ecommerce UX: search &amp; faceted navigation</a> <span class="src">— Nielsen Norman Group research report</span></li>
@@ -665,10 +664,9 @@
 
       <footer>
         <div class="wrap foot-in">
-          <span><b style="color:var(--text-2)">Catalog</b> — a personal index of software I develop, maintain, and deploy — products shown here, ~2,250 entities in the full private index.</span>
+          <span><b style="color:var(--text-2)">Catalog</b> — the personal index of software by Nico S. Products shown here; ~2,250 entities in the full private index.</span>
           <span class="sp"></span>
-          <span class="mono" style="font-size:11.5px">V4 · locked Nov 2026</span>
-          <span>85 real products · public-safe projection.</span>
+          <span class="mono" style="font-size:11.5px">Showcase v1.1 · 85 real products · public-safe projection.</span>
         </div>
       </footer>
     </main>
@@ -2354,7 +2352,7 @@
       function renderResults(){
         var out=filtered();
         $("resCount").textContent = "Showing "+out.length+" of "+PRODUCTS.length+" products";
-        $("resNote").textContent = "real records from the catalog — public-safe fields only";
+        $("resNote").textContent = "real records from the catalog";
         gridEl.innerHTML=""; listEl.innerHTML="";
         gridEl.scrollTop=0; listEl.scrollTop=0;
         emptyEl.className = out.length? "empty" : "empty on";
