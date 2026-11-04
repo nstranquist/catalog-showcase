@@ -127,7 +127,15 @@ the showcase summary for that product in any case.
       repo at ~/workspace/catalog-showcase (index.html + dataset + pipeline
       + this record + README), annotated tag v1.0.0 (see `git log` there
       for the commit hash). Local only, no remote.
-- [ ] Optional, Nico's call only: share the artifact publicly, or push the
-      lock-in repo to a GitHub repo (e.g. alongside Catalog Gallery).
-- [ ] Next pass (agreed 2026-11-03): review all wording and claims on the
-      page for best positioning, not merely historical accuracy.
+- [x] Wording and claims review done (WORDING-REVIEW.md); after two
+      rejected rewrites the hero was settled in a plain human voice chosen
+      by Nico (H1 "A list of the software I make.", eyebrow removed).
+- [x] QA pass (v1.2): SEO meta/OG/theme-color, WCAG AA contrast fix,
+      heading-order cleanup, drawer focus trap, 40px touch targets, and a
+      real List-view bug fixed (wrong column class threw and left the list
+      empty). Copy/data/interactions otherwise unchanged.
+- [x] Published (2026-11-03, Nico's go): artifact shared publicly
+      (muse.ai link, serves v1.2) and the lock-in repo pushed to
+      https://github.com/nstranquist/catalog-showcase with tags v1.0.0,
+      v1.1.0, v1.2.0 (normal git push via gh login, per Nico's workflow
+      rule — no per-file API edits).

@@ -14,8 +14,16 @@ public-safe `PublicEntity` DTO only.
   `software-catalog-tool-v4`, saved version **v10** (live-DOM facade build).
   `index.html` in this repo is the artifact's self-contained export of that
   exact version.
-- **Not yet published:** the artifact is not publicly shared, and this local
-  repo has no remote. Pushing to a GitHub repo remains a separate decision.
+- **Published (2026-11-03):** this repo lives at
+  https://github.com/nstranquist/catalog-showcase (public, tags v1.0.0 /
+  v1.1.0 / v1.2.0), and the page itself is shared at
+  https://muse.ai/s/software-catalog-tool-v4-xft6wpxooplrxb/kdwSMrijUMSZrWN_McDhl1ERhDdZT5U-FuUZA1wddfM
+  (serves v1.2; re-share after future edits to update it).
+- **v1.2 notes:** hero wording settled in a plain, human voice (H1 "A list
+  of the software I make.", eyebrow removed), and a QA pass (SEO meta/OG,
+  WCAG AA contrast, heading order, drawer focus trap, 40px touch targets,
+  plus a fixed List-view bug) was applied with no copy or data changes
+  beyond the footer version string.
 
 ## What's here
 
